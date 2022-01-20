@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Form } from "react-bootstrap";
-// import { getCategory } from "../../store/myExpenses/action";
+import { getCategory } from "../../store/myExpenses/action";
 
 export default function AddExpense() {
   const [amount, setAmount] = useState(0);
@@ -9,9 +9,10 @@ export default function AddExpense() {
   const [CatName, setCatName] = useState("select");
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getCategory());
-  // }, [dispatch]);
+  useEffect(() => {
+    console.log("Hi fro add expense");
+    dispatch(getCategory());
+  }, [dispatch]);
   return (
     <>
       {/* <Card>

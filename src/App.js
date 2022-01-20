@@ -9,6 +9,7 @@ import Signup from "./Pages/Signup";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/action";
+import AddExpense from "./components/AddExpense";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,8 +23,9 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/my_expenses" element={<MyExpenses />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route path="/my_expenses" element={<MyExpenses />} />
+        <Route path="/addExpenses" element={<AddExpense />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>

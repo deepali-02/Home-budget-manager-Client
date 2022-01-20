@@ -1,19 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Form } from "react-bootstrap";
 import { fetchMyExpenses } from "../../store/myExpenses/action";
 import { selectUser } from "../../store/user/selector";
-import AddExpense from "../../components/AddExpense";
-import "./style.css"
+
+import "./style.css";
 //import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { Progress } from "../../components/Progress";
 import Dount from "../../components/Dount";
 import Button from "react-bootstrap/Button";
+import AddExpense from "../../components/AddExpense";
 
 export default function MyExpenses() {
   const dispatch = useDispatch();
   const { id, budget } = useSelector(selectUser);
+  const [mode, setMode] = useState(false);
   //const myExpense = useSelector(selectMyExpenses);
 
   useEffect(() => {
@@ -22,17 +24,22 @@ export default function MyExpenses() {
     dispatch(fetchMyExpenses(id));
   }, [dispatch, id]);
 
+  // const form = () => {
+  //   console.log("I am in function");
+  //   <AddExpense />;
+  // };
   return (
     <>
-    <h1>Track your monthly expense!</h1>
+      <h1>Track your monthly expense!</h1>
       <div className="dountChart">
-      <Dount />
+        <Dount />
       </div>
 
       <div>
-        <Button className="mt-5" onClick={<AddExpense/>}>
+        <Button className="mt-5" onClick={() => setMode(!mode)}>
           Add expense
         </Button>
+        {mode && <AddExpense />}
       </div>
     </>
   );
