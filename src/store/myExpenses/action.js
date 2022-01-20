@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getState } from "jest-circus";
 import { apiUrl } from "../../config/constants";
 
 const myExpensesFetches = (expenses) => {
@@ -21,3 +22,14 @@ export const fetchMyExpenses = (id) => {
     }
   };
 };
+
+// export const getCategory = () => {
+//   return async (dispatch, getState) => {
+//     try {
+//       const res = await axios.get(`${apiUrl}/user/category`);
+//       console.log("Category table info", res);
+//     } catch (e) {
+//       console.log(e.message);
+//     }
+//   };
+// };
