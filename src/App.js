@@ -6,8 +6,15 @@ import HomePage from "./Pages/HomePage";
 import MyExpenses from "./Pages/MyExpenses";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getUserWithStoredToken } from "./store/user/action";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserWithStoredToken());
+  }, [dispatch]);
   return (
     <div className="App">
       <NavBar />
