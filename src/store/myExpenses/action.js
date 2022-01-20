@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getState } from "jest-circus";
+
 import { apiUrl } from "../../config/constants";
 
 const myExpensesFetches = (expenses) => {

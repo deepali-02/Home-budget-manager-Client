@@ -9,7 +9,7 @@ import "./style.css"
 //import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { Progress } from "../../components/Progress";
 import Dount from "../../components/Dount";
-import Button from "@restart/ui/esm/Button";
+import Button from "react-bootstrap/Button";
 
 export default function MyExpenses() {
   const dispatch = useDispatch();
