@@ -19,8 +19,8 @@ export default function MyExpenses() {
   //const myExpense = useSelector(selectMyExpenses);
 
   useEffect(() => {
-    console.log("I am from useEffect");
-    console.log("id from myExpense page", id);
+    //console.log("I am from useEffect");
+    //console.log("id from myExpense page", id);
     dispatch(fetchMyExpenses(id));
   }, [dispatch, id]);
 

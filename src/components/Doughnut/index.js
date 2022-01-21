@@ -12,29 +12,51 @@ export default function DoughnutChart() {
   const { budget } = useSelector(selectUser);
 
   console.log("All data of myExpense selector", myExpense);
+  const mergedCategories = myExpense.reduce((acc, expense) => {
+    const categoryExist = acc.find(
+      (eachExpense) => eachExpense.categoryId === expense.categoryId
+    );
+    console.log("Category Exist", categoryExist);
+    const updatedCategory = categoryExist
+      ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
+      : null;
+    const newAcc = updatedCategory
+      ? acc.map((eachExpense) => {
+          if (
+            parseInt(eachExpense.categoryId) ===
+            parseInt(updatedCategory.categoryId)
+          ) {
+            return updatedCategory;
+          } else {
+            return eachExpense;
+          }
+        })
+      : [...acc, expense];
+    return newAcc;
+  }, []);
 
-  const categoryName = myExpense.map((nm) => {
+  const categoryName = mergedCategories.map((nm) => {
     return nm.category.name;
   });
-  console.log(" category name", categoryName);
+  console.log(" Merged category", mergedCategories);
 
-  const categoryColor = myExpense.map((c) => {
+  const categoryColor = mergedCategories.map((c) => {
     return c.category.color;
   });
-  console.log(" category color", categoryColor);
+  //console.log(" category color", categoryColor);
 
-  const amt = myExpense.map((ex) => {
+  const amt = mergedCategories.map((ex) => {
     return ex.amount;
   });
-  console.log("amount ", amt);
+  //console.log("amount ", amt);
 
   let sum = amt.reduce((a, b) => a + b, 0);
-  console.log("sum", sum);
+  //console.log("sum", sum);
 
   const bal = "Balance left";
   let balance = budget - sum;
-  console.log("balance", balance);
-  // const balance = 400;
+  //console.log("balance", balance);
+
   const expense = {
     labels: [...categoryName, bal],
     datasets: [
