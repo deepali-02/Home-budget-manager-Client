@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card, Form } from "react-bootstrap";
 import { getCategory } from "../../store/myExpenses/action";
 import { selectCategory } from "../../store/myExpenses/selector";
+import Button from "@restart/ui/esm/Button";
 
 export default function AddExpense() {
   const [amount, setAmount] = useState(0);
@@ -20,29 +21,44 @@ export default function AddExpense() {
     <>
       <Card>
         <Form
-          className="rounded p-4 p-sm-3"
+          className="rounded p-4 p-sm-3 mt-5"
           style={{
-            width: "70%",
-
+            width: "50%",
+            alignItems: "center",
             marginLeft: "20%",
             boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.2)",
           }}
         >
-          <Form.Group>
+          <Form.Group className="mt-5">
             <Form.Label>How much you spent? </Form.Label>
             <Form.Control
               value={amount}
               onChange={(event) => setAmount(event.target.value)}
               type="number"
-              placeholder="0$"
+              placeholder
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mt-5">
+            <Form.Label>Select Category</Form.Label>
+            <Form.Select id="enabledSelect">
+              {Categoty.map((c) => (
+                <option> {c.name}</option>
+              ))}
+            </Form.Select>
+          </Form.Group>
+          <Form.Group className="mt-5">
+            <Form.Label>Date </Form.Label>
+            <Form.Control
+              value={date}
+              onChange={(event) => setDate(event.target.value)}
+              type="date"
+              placeholder
               required
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Select Category</Form.Label>
-            <Form.Select id="enabledSelect">
-              <option>{Categoty.map((c) => c.name)}</option>
-            </Form.Select>
+            <Button className="mt-5">Add</Button>
           </Form.Group>
         </Form>
       </Card>
