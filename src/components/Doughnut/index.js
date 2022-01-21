@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { selectUser } from "../../store/user/selector";
 
-export default function Dount() {
+export default function DoughnutChart() {
   const myExpense = useSelector(selectMyExpenses);
   const { budget } = useSelector(selectUser);
 

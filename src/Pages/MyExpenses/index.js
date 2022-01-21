@@ -8,7 +8,7 @@ import { selectUser } from "../../store/user/selector";
 import "./style.css";
 //import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { Progress } from "../../components/Progress";
-import Dount from "../../components/Dount";
+import DoughnutChart from "../../components/Doughnut";
 import Button from "react-bootstrap/Button";
 import AddExpense from "../../components/AddExpense";
 
@@ -32,7 +32,7 @@ export default function MyExpenses() {
     <>
       <h1>Track your monthly expense!</h1>
       <div className="dountChart">
-        <Dount />
+        <DoughnutChart />
       </div>
 
       <div>

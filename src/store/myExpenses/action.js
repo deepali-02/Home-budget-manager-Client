@@ -9,6 +9,13 @@ const myExpensesFetches = (expenses) => {
   };
 };
 
+const categoryFetched = (category) => {
+  return {
+    type: "CATEGORY_FETCH",
+    payload: category,
+  };
+};
+
 export const fetchMyExpenses = (id) => {
   return async (dispatch, getState) => {
     try {
@@ -28,6 +35,7 @@ export const getCategory = () => {
     try {
       const res = await axios.get(`${apiUrl}/user/category`);
       console.log("Category table info", res);
+      dispatch(categoryFetched(res.data));
     } catch (e) {
       console.log(e.message);
     }
