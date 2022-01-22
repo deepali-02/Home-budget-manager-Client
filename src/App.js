@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/action";
 import AddExpense from "./components/AddExpense";
+import bg from "./images/bgimg.jpg";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,7 +18,14 @@ function App() {
     dispatch(getUserWithStoredToken());
   }, [dispatch]);
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        backgroundImage: "url(" + bg + ")",
+        backgroundSize: "cover",
+        height: "100vh",
+      }}
+    >
       <NavBar />
       <br />
 

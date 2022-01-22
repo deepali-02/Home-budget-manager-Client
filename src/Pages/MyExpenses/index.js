@@ -11,7 +11,7 @@ import { Progress } from "../../components/Progress";
 import DoughnutChart from "../../components/Doughnut";
 import Button from "react-bootstrap/Button";
 import AddExpense from "../../components/AddExpense";
-
+import { useNavigate } from "react-router";
 export default function MyExpenses() {
   const dispatch = useDispatch();
   const { id, budget } = useSelector(selectUser);
@@ -28,6 +28,8 @@ export default function MyExpenses() {
   //   console.log("I am in function");
   //   <AddExpense />;
   // };
+
+  const navigate = useNavigate();
   return (
     <>
       <h1>Track your monthly expense!</h1>
@@ -35,11 +37,16 @@ export default function MyExpenses() {
         <DoughnutChart />
       </div>
 
-      <div>
+      {/* <div>
         <Button className="mt-5" onClick={() => setMode(!mode)}>
           Add expense
         </Button>
         {mode && <AddExpense />}
+      </div> */}
+      <div>
+        <Button className="mt-5" onClick={() => navigate("/addExpense")}>
+          Add expense
+        </Button>
       </div>
     </>
   );
