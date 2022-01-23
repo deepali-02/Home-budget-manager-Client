@@ -18,6 +18,13 @@ const categoryFetched = (category) => {
   };
 };
 
+const newExpenseAdded = (newEx) => {
+  return {
+    type: "NEW_EXPENSE",
+    payload: newEx,
+  };
+};
+
 export const fetchMyExpenses = (id) => {
   return async (dispatch, getState) => {
     try {
@@ -49,12 +56,13 @@ export const newExpense = (amount, date, categoryId) => {
     try {
       console.log("I am from new expense function");
       const { id } = selectUser(getState());
-      const res = await axios.post(`${apiUrl}/user/my_expenses/${id}`, {
+      const response = await axios.post(`${apiUrl}/user/my_expenses/${id}`, {
         amount,
         date,
         categoryId,
       });
-      console.log("New Expense", res);
+      console.log("New Expense", response);
+      dispatch(newExpenseAdded(response.data));
     } catch (e) {
       console.log(e.message);
     }

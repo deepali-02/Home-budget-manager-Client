@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch,useSelector } from "react-redux";
-import { Form, Button, Col, Row, Container, Card } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Form,
+  Button,
+  Col,
+  Row,
+  Container,
+  Card,
+  Image,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 
-import img1 from "../../images/moneyslides_800x600.gif";
+import loginImg from "../../images/login.jpg";
 import { login } from "../../store/user/action";
 import { selectToken } from "../../store/user/selector";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const navigate = useNavigate();
 
@@ -33,18 +41,14 @@ export default function Login() {
   return (
     <Row>
       <Col>
-        <br />
-        <br />
-        <br />
-        <br />
         <div className="color-overlay d-flex justify content center align-items-center">
           <Form
-            className="rounded p-4 p-sm-3"
+            // className="rounded p-4 p-sm-3"
             style={{
-              width: "70%",
-
-              marginLeft: "20%",
-              boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.2)",
+              width: "80%",
+              marginTop: "10%",
+              marginLeft: "10%",
+              // boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.2)",
             }}
           >
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -77,25 +81,27 @@ export default function Login() {
                 Log in
               </Button>
             </Form.Group>
-            Not having account?
-            <Link
-              to="/signup"
-              style={{ textAlign: "center", paddingLeft: "2%" }}
-            >
-              Click here to signup
-            </Link>
+            <Form.Group className="mt-5">
+              Not having account?
+              <Link
+                to="/signup"
+                style={{ textAlign: "center", paddingLeft: "2%" }}
+              >
+                Click here to signup
+              </Link>
+            </Form.Group>
           </Form>
         </div>
       </Col>
       <Col>
-        <br />
-        <br />
-        <br />
-        <br />
         <div className="color-overlay d-flex justify content center align-items-center">
-          <Card style={{ width: "80%", marginRight: "20%", marginLeft: "20%" }}>
-            <img src={img1} alt="" />
-          </Card>
+          {/* <Card style={{ width: "80%", marginRight: "20%", marginLeft: "20%" }}> */}
+          <Image
+            src={loginImg}
+            fluid
+            style={{ border: "none", marginBottom: "10%" }}
+          />
+          {/* </Card> */}
         </div>
       </Col>
     </Row>

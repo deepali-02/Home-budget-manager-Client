@@ -51,9 +51,9 @@ export default function NavBar() {
     //   </Navbar>
     // </>
     <>
-      <Navbar  expand="lg" variant="dark">
-       
-        <Navbar.Brand as={NavLink} to="/"> {" "}
+      <Navbar expand="lg" variant="info">
+        <Navbar.Brand as={NavLink} to="/">
+          {" "}
           <img
             src={logo}
             width="70px"
@@ -69,6 +69,7 @@ export default function NavBar() {
             {token ? (
               <NavbarItem path="/my_expenses" linkText="My Expenses" />
             ) : null}
+            {token ? <NavbarItem path="/history" linkText="History" /> : null}
             {/* <NavbarItem path="/addExpense" linkText=""/> */}
             {loginLogoutControls}
           </Nav>

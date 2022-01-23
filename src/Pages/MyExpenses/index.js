@@ -44,7 +44,7 @@ export default function MyExpenses() {
         {mode && <AddExpense />}
       </div> */}
       <div>
-        <Button className="mt-5" onClick={() => navigate("/addExpense")}>
+        <Button className="mt-5" onClick={() => navigate("/addExpenses")}>
           Add expense
         </Button>
       </div>

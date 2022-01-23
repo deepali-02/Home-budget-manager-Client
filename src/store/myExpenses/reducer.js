@@ -19,6 +19,13 @@ export default function myExpensesReducer(state = initialState, action) {
       };
     }
 
+    case "NEW_EXPENSE": {
+      return {
+        ...state,
+        myExpenses: [...state.myExpenses, action.payload],
+      };
+    }
+
     default:
       return state;
   }

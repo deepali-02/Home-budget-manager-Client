@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/action";
 import AddExpense from "./components/AddExpense";
+import History from "./Pages/History";
 import bg from "./images/bgimg.jpg";
 
 function App() {
@@ -20,11 +21,12 @@ function App() {
   return (
     <div
       className="App"
-      style={{
-        backgroundImage: "url(" + bg + ")",
-        backgroundSize: "cover",
-        height: "100vh",
-      }}
+      // style={{
+      //   backgroundImage: "url(" + bg + ")",
+      //   backgroundSize: "cover",
+      //   height: "100vh",
+      //   width: "100%",
+      // }}
     >
       <NavBar />
       <br />
@@ -33,6 +35,7 @@ function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route path="/my_expenses" element={<MyExpenses />} />
         <Route path="/addExpenses" element={<AddExpense />} />
+        <Route path="/history" element={<History />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

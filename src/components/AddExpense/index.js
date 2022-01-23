@@ -5,7 +5,7 @@ import moment from "moment";
 import { getCategory } from "../../store/myExpenses/action";
 import { selectCategory } from "../../store/myExpenses/selector";
 import { newExpense } from "../../store/myExpenses/action";
-
+import { Navigate, useNavigate } from "react-router";
 export default function AddExpense() {
   const [amount, setAmount] = useState(0);
   //const currentDate = moment(new Date()).format("YYYY/MM/DD");
@@ -15,7 +15,7 @@ export default function AddExpense() {
   const dispatch = useDispatch();
   const categoty = useSelector(selectCategory);
   //console.log("Category Id", categoryId);
-
+  const navigate = useNavigate();
   useEffect(() => {
     //console.log("Hi fro add expense");
     dispatch(getCategory());
@@ -29,6 +29,7 @@ export default function AddExpense() {
     setAmount(0);
     setDate("");
     setCategoryId("");
+    navigate("/my_expenses");
   }
 
   return (
