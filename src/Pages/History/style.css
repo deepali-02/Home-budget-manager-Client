@@ -15,17 +15,17 @@ tr:nth-child(even) {
 }
 
 .image {
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
+  width: 50px;
+  height: 40px;
+  border-radius: 10px;
   border: none;
 }
 
 .table-container {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 30px;
-  margin-right: 50px;
-  margin-left: 50px;
+  /* //margin-top: 10%; */
+  margin-bottom: 10%;
+  margin-right: 20%;
+  margin-left: 20%;
 }

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategory } from "../../store/myExpenses/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
+import BarChart1 from "../../components/BarChart";
 import "./style.css";
 
 export default function History() {
@@ -29,6 +30,9 @@ export default function History() {
             </tr>
           ))}
         </table>
+      </div>
+      <div>
+        <BarChart1 />
       </div>
     </div>
   );
