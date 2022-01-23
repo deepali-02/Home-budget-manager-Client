@@ -1,6 +1,7 @@
 .dountChart {
   text-align: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  width: 55%;
 }

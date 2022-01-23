@@ -11,12 +11,12 @@ export default function DoughnutChart() {
   const myExpense = useSelector(selectMyExpenses);
   const { budget } = useSelector(selectUser);
 
-  console.log("All data of myExpense selector", myExpense);
+  //console.log("All data of myExpense selector", myExpense);
   const mergedCategories = myExpense.reduce((acc, expense) => {
     const categoryExist = acc.find(
       (eachExpense) => eachExpense.categoryId === expense.categoryId
     );
-    console.log("Category Exist", categoryExist);
+   // console.log("Category Exist", categoryExist);
     const updatedCategory = categoryExist
       ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
       : null;
@@ -86,9 +86,9 @@ export default function DoughnutChart() {
 
   return (
     <div className="dountChart">
-      <Card className="mt-5" style={{ width: "100%", display: "flex" }}>
+      <div className="mt-5" style={{ width: "100%", display: "flex" }}>
         <Doughnut data={expense} options={options} />
-      </Card>
+      </div>
     </div>
   );
 }
