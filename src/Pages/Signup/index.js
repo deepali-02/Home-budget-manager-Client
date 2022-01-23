@@ -1,9 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import img1 from "../../images/moneyslides_800x600.gif";
+import signupImg from "../../images/signup.png";
 import { useNavigate } from "react-router";
-import { Form, Button, Col, Row, Container, Card } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Col,
+  Row,
+  Image,
+  Container,
+  Card,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { signUp } from "../../store/user/action";
 import { selectToken } from "../../store/user/selector";
@@ -94,9 +102,13 @@ const Signup = () => {
       </Col>
       <Col className="mt-5">
         <div className="color-overlay d-flex justify content center align-items-center">
-          <Card style={{ width: "80%", marginRight: "20%", marginLeft: "20%" }}>
-            <img src={img1} alt="" />
-          </Card>
+          {/* <Card style={{ width: "80%", marginRight: "20%", marginLeft: "20%" }}> */}
+          <Image
+            src={signupImg}
+            fluid
+            style={{ border: "none", marginBottom: "10%" }}
+          />
+          {/* </Card> */}
         </div>
       </Col>
     </Row>
