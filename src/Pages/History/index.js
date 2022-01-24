@@ -31,7 +31,7 @@ export default function History() {
           ))}
         </table>
       </div>
-      <div>
+      <div style={{ marginLeft: "20%" }}>
         <BarChart1 />
       </div>
     </div>
