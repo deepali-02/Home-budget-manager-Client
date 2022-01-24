@@ -33,7 +33,7 @@ export default function MyExpenses() {
   return (
     <>
       <h1>Track your monthly expense!</h1>
-      <div className="dountChart">
+      <div className="dountChart1">
         <DoughnutChart />
       </div>
 
