@@ -3,11 +3,26 @@ import { selectCategory } from "../../store/myExpenses/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import BarChart1 from "../../components/BarChart";
 import "./style.css";
+import { useEffect } from "react";
+import { fetchMyExpenses } from "../../store/myExpenses/action";
+import { selectUser } from "../../store/user/selector";
+import { useNavigate } from "react-router";
 
 export default function History() {
   const dispatch = useDispatch();
+  const { id, token } = useSelector(selectUser);
+  const navigate = useNavigate();
   const ctegory = useSelector(selectCategory);
   const expense = useSelector(selectMyExpenses);
+
+  useEffect(() => {
+    //console.log("I am from useEffect");
+    //console.log("id from myExpense page", id);
+    if (token === null) {
+      navigate("/");
+    }
+    dispatch(fetchMyExpenses(id));
+  }, [dispatch, id, navigate, token]);
   return (
     <div>
       <h1>History page</h1>

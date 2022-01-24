@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "chart.js/auto";
 import { Card } from "react-bootstrap";
 import { Doughnut } from "react-chartjs-2";
@@ -6,17 +6,25 @@ import "./style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { selectUser } from "../../store/user/selector";
+import { useNavigate } from "react-router";
 
 export default function DoughnutChart() {
   const myExpense = useSelector(selectMyExpenses);
-  const { budget } = useSelector(selectUser);
+  const { budget, token } = useSelector(selectUser);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token === null) {
+      navigate("/");
+    }
+  }, [token, navigate]);
 
   //console.log("All data of myExpense selector", myExpense);
   const mergedCategories = myExpense.reduce((acc, expense) => {
     const categoryExist = acc.find(
       (eachExpense) => eachExpense.categoryId === expense.categoryId
     );
-   // console.log("Category Exist", categoryExist);
+    // console.log("Category Exist", categoryExist);
     const updatedCategory = categoryExist
       ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
       : null;
@@ -62,7 +70,7 @@ export default function DoughnutChart() {
     datasets: [
       {
         label: "Monthy Expense",
-        backgroundColor: [...categoryColor, "#808080"],
+        backgroundColor: [...categoryColor, "#8f8d86"],
         borderColor: "rgba(0,0,0,1)",
         borderWidth: 2,
         data: [...amt, balance],
@@ -85,10 +93,10 @@ export default function DoughnutChart() {
   };
 
   return (
-    <div className="dountChart">
-      <div className="mt-5" style={{ width: "100%", display: "flex" }}>
-        <Doughnut data={expense} options={options} />
-      </div>
+    // <div className="dountChart">
+    <div className="mt-5" style={{ width: "55%", display: "flex" }}>
+      <Doughnut data={expense} options={options} />
     </div>
+    // </div>
   );
 }
