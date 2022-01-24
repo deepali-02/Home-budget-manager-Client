@@ -67,7 +67,7 @@ export default function BarChart1() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid strokeDasharray="10 10" />
         <Bar dataKey="amount" fill="#bd0b61" background={{ fill: "#eee" }} />
       </BarChart>
     </div>

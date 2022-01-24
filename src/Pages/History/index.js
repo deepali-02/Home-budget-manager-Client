@@ -31,8 +31,11 @@ export default function History() {
           ))}
         </table>
       </div>
-      <div style={{ marginLeft: "20%" }}>
-        <BarChart1 />
+      <div>
+        <h3> Expense history as per categories</h3>
+        <div style={{ marginLeft: "20%", marginTop: "5%" }}>
+          <BarChart1 />
+        </div>
       </div>
     </div>
   );
