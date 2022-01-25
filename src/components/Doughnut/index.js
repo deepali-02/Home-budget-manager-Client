@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import "chart.js/auto";
 import { Card } from "react-bootstrap";
 import { Doughnut } from "react-chartjs-2";
-import "./style.css";
+//import "./style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { selectUser } from "../../store/user/selector";
 import { useNavigate } from "react-router";
+import Loading from "../Loading";
 
 export default function DoughnutChart() {
   const myExpense = useSelector(selectMyExpenses);
@@ -93,10 +94,16 @@ export default function DoughnutChart() {
   };
 
   return (
-    // <div className="dountChart">
-    <div className="mt-5" style={{ width: "55%", display: "flex" }}>
-      <Doughnut data={expense} options={options} />
+    <div>
+      {!expense && !options ? (
+        <Loading />
+      ) : (
+        <div className="dountChart">
+          <div className="mt-5" style={{ display: "flex" }}>
+            <Doughnut data={expense} options={options} />
+          </div>
+        </div>
+      )}
     </div>
-    // </div>
   );
 }

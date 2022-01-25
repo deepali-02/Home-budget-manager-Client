@@ -51,7 +51,7 @@ export default function NavBar() {
     //   </Navbar>
     // </>
     <>
-      <Navbar expand="lg" variant="info">
+      <Navbar expand="lg" variant="light">
         <Navbar.Brand as={NavLink} to="/">
           {" "}
           <img
