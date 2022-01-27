@@ -64,7 +64,7 @@ export default function BarChart1() {
         barSize={20}
       >
         <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
-        <YAxis />
+        <YAxis domain={[0, 500]} />
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="10 10" />
