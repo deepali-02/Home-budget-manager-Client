@@ -3,6 +3,7 @@ import axios from "axios";
 import { selectUser } from "../user/selector";
 
 import { apiUrl } from "../../config/constants";
+import { appLoading, appDoneLoading } from "../appState/action";
 
 const myExpensesFetches = (expenses) => {
   return {
@@ -53,6 +54,7 @@ export const getCategory = () => {
 
 export const newExpense = (amount, date, categoryId) => {
   return async (dispatch, getState) => {
+    dispatch(appLoading());
     try {
       console.log("I am from new expense function");
       const { id } = selectUser(getState());
@@ -63,6 +65,7 @@ export const newExpense = (amount, date, categoryId) => {
       });
       console.log("New Expense", response);
       dispatch(newExpenseAdded(response.data));
+      dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);
     }

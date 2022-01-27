@@ -11,6 +11,7 @@ export const clearMessage = () => ({ type: CLEAR_MESSAGE });
 
 export const setMessage = (variant, dismissable, text) => {
   return {
+    
     type: SET_MESSAGE,
     payload: {
       variant,
