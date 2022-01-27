@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "chart.js/auto";
 import { Card } from "react-bootstrap";
 import { Doughnut } from "react-chartjs-2";
@@ -13,7 +13,7 @@ export default function DoughnutChart() {
   const myExpense = useSelector(selectMyExpenses);
   const { budget, token } = useSelector(selectUser);
   const navigate = useNavigate();
-
+  const [categoryNames, setCategoryNames] = useState("");
   useEffect(() => {
     if (token === null) {
       navigate("/");
@@ -44,10 +44,20 @@ export default function DoughnutChart() {
     return newAcc;
   }, []);
 
-  const categoryName = mergedCategories.map((nm) => {
-    return nm.category.name;
-  });
-  console.log(" Merged category", mergedCategories);
+  const categoryName = mergedCategories.map((nm) => nm.category.name);
+  // console.log(" Merged category", mergedCategories);
+
+  useEffect(() => {
+    console.log(mergedCategories);
+
+    if (mergedCategories.length > 0) {
+      //  setNames(mergedCategories.map((nm) => nm.category.name));
+      const categoryNames = mergedCategories.map((nm) => {
+        console.log("name of categories", nm.category.name);
+        return setCategoryNames(nm.category.name);
+      });
+    }
+  }, []);
 
   const categoryColor = mergedCategories.map((c) => {
     return c.category.color;
