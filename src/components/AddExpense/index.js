@@ -26,6 +26,7 @@ export default function AddExpense() {
   function submitForm(e) {
     e.preventDefault();
     // console.log("amount,date,categoryId", amount, date, categoryId);
+    if (!categoryId) return;
     dispatch(newExpense(amount, date, categoryId));
     setAmount(0);
     setDate("");
@@ -52,6 +53,7 @@ export default function AddExpense() {
               value={amount}
               onChange={(event) => setAmount(event.target.value)}
               type="number"
+              min="1"
               required
             />
           </Form.Group>
@@ -59,9 +61,10 @@ export default function AddExpense() {
             <Form.Label>Select Category</Form.Label>
             <Form.Select
               onChange={(event) => setCategoryId(event.target.value)}
-              id="enabledSelect"
+              isInvalid
+              // id="enabledSelect"
             >
-              <option disabled defaultValue>
+              <option disabled selected>
                 Please select the category
               </option>
               {categoty.map((c) => (
