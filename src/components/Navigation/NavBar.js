@@ -59,7 +59,7 @@ export default function NavBar() {
             width="70px"
             height="70px"
             alt=""
-            style={{ borderRadius: "30px" }}
+            style={{ borderRadius: "30px", border: "none" }}
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

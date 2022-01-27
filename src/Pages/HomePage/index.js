@@ -8,12 +8,28 @@ export default function HomePage() {
     <div>
       <Container>
         <h1>
-          <img src={logo} width="70px" height="70px" alt="" /> Welcome to Home
-          Budget Manager
+          <img
+            src={logo}
+            style={{
+              width: "70px",
+              height: "70px",
+              borderRadius: "80px",
+              // border: "none",
+            }}
+            alt=""
+          />{" "}
+          Welcome to Home Budget Manager
         </h1>
         <div className="color-overlay d-flex justify content center align-items-center">
-          <Card style={{ width: "80%", marginRight: "20%", marginLeft: "20%" }}>
-            <img src={img1} alt="" />
+          <Card
+            style={{
+              width: "80%",
+              marginRight: "20%",
+              marginLeft: "20%",
+              border: "none",
+            }}
+          >
+            <img src={img1} style={{ borderRadius: "20px" }} alt="" />
           </Card>
         </div>
       </Container>

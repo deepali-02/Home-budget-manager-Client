@@ -40,6 +40,7 @@ const Signup = () => {
     setEmail("");
     setPassword("");
     setBudget(0);
+    
   }
 
   return (
@@ -75,7 +76,8 @@ const Signup = () => {
               value={budget}
               onChange={(event) => setBudget(event.target.value)}
               type="number"
-              placeholder="Set your monthly budget here"
+              min="1"
+              placeholder="Set your monthly budget here e.g. 500"
               required
             />
           </Form.Group>

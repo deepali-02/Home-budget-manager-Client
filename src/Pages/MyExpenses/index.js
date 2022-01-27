@@ -5,7 +5,7 @@ import { Form } from "react-bootstrap";
 import { fetchMyExpenses } from "../../store/myExpenses/action";
 import { selectUser } from "../../store/user/selector";
 
-import "./style.css";
+//import "./style.css";
 //import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { Progress } from "../../components/Progress";
 import DoughnutChart from "../../components/Doughnut";
@@ -33,7 +33,7 @@ export default function MyExpenses() {
   return (
     <>
       <h1>Track your monthly expense!</h1>
-      <div className="dountChart1">
+      <div style={{ width: "30%", alignItems: "center", marginLeft: "35%" }}>
         <DoughnutChart />
       </div>
 
