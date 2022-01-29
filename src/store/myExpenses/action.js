@@ -26,6 +26,13 @@ const newExpenseAdded = (newEx) => {
   };
 };
 
+const selectedMonth = (month) => {
+  return {
+    type: "SELECTED_MONTH",
+    payload: month,
+  };
+};
+
 export const fetchMyExpenses = (id) => {
   return async (dispatch, getState) => {
     try {
@@ -66,6 +73,20 @@ export const newExpense = (amount, date, categoryId) => {
       console.log("New Expense", response);
       dispatch(newExpenseAdded(response.data));
       dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
+
+//search by month
+export const expenseByMonth = (month) => {
+  return async (dispatch, getState) => {
+    try {
+      // const month=req.params.month
+      const res = await axios.get(`${apiUrl}/user/my_expenses/month/${month}`);
+      console.log("selected month expenses: ", res);
+      dispatch(selectedMonth(res.data));
     } catch (e) {
       console.log(e.message);
     }

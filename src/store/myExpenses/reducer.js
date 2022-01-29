@@ -1,6 +1,7 @@
 const initialState = {
   myExpenses: [],
   category: [],
+  selectedMonthExpenses: [],
 };
 
 export default function myExpensesReducer(state = initialState, action) {
@@ -23,6 +24,14 @@ export default function myExpensesReducer(state = initialState, action) {
       return {
         ...state,
         myExpenses: [...state.myExpenses, action.payload],
+      };
+    }
+
+    case "SELECTED_MONTH": {
+      console.log("action paylod", action.payload);
+      return {
+        ...state,
+        selectedMonthExpenses: [...action.payload],
       };
     }
 
