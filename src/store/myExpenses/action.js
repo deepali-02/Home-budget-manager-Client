@@ -33,6 +33,13 @@ const selectedMonth = (month) => {
   };
 };
 
+export function expenseDeleted(id) {
+  return {
+    type: "DELETE_EXPENSE",
+    payload: id,
+  };
+}
+
 export const fetchMyExpenses = (id) => {
   return async (dispatch, getState) => {
     try {
@@ -91,4 +98,15 @@ export const expenseByMonth = (month) => {
       console.log(e.message);
     }
   };
+};
+
+//delet a expense
+export const deleteExpense = (id) => async (dispatch, getstate) => {
+  try {
+    const res = await axios.delete(`${apiUrl}/user/my_expenses/delete/${id}`);
+    console.log("deleted?", res.data);
+    dispatch(expenseDeleted(id));
+  } catch (e) {
+    console.log(e.message);
+  }
 };

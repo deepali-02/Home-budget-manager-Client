@@ -11,6 +11,7 @@ import { useNavigate } from "react-router";
 import testImg from "../../images/test.png";
 import SearchMonth from "../../components/SearchByMonth";
 import { selectSearchMonth } from "../../store/myExpenses/selector";
+import { deleteExpense } from "../../store/myExpenses/action";
 
 export default function History() {
   const dispatch = useDispatch();
@@ -29,8 +30,19 @@ export default function History() {
     }
     dispatch(fetchMyExpenses(id));
   }, [dispatch, id, navigate, token]);
+
+  const onDeleteClick = (id) => {
+    console.log("story to be deleted!");
+    dispatch(deleteExpense(id));
+  };
+
   return (
     <div>
+      <div>
+        <Container className="mt-5 mb-5" style={{ width: "60rem" }}>
+          <SearchMonth />
+        </Container>
+      </div>
       <div>
         {expense.length === 0 ? (
           <div>
@@ -45,11 +57,7 @@ export default function History() {
         ) : (
           <div>
             <h1>History page</h1>
-            <div>
-              <Container className="mt-5 mb-5" style={{ width: "60rem" }}>
-                <SearchMonth />
-              </Container>
-            </div>
+
             <div className="table-container">
               {monthExpense.length !== 0 ? (
                 <>
@@ -70,7 +78,12 @@ export default function History() {
                         <td>{ex.amount}</td>
                         <td>{ex.date}</td>
                         <td>
-                          <Button variant="danger">delete</Button>
+                          <Button
+                            variant="danger"
+                            onClick={() => onDeleteClick(ex.id)}
+                          >
+                            delete
+                          </Button>
                         </td>
                       </tr>
                     ))}
@@ -95,7 +108,12 @@ export default function History() {
                         <td>{ex.amount}</td>
                         <td>{ex.date}</td>
                         <td>
-                          <Button variant="danger">delete</Button>
+                          <Button
+                            variant="danger"
+                            onClick={() => onDeleteClick(ex.id)}
+                          >
+                            delete
+                          </Button>
                         </td>
                       </tr>
                     ))}

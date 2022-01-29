@@ -28,10 +28,21 @@ export default function myExpensesReducer(state = initialState, action) {
     }
 
     case "SELECTED_MONTH": {
-      console.log("action paylod", action.payload);
       return {
         ...state,
         selectedMonthExpenses: [...action.payload],
+      };
+    }
+
+    case "DELETE_EXPENSE": {
+      const expenseId = action.payload;
+      const expenses = state.myExpenses;
+      console.log("expenses from DELETE", expenses);
+      const filterExpense = expenses.filter((ex) => ex.id !== expenseId);
+      console.log("filter expenses ", filterExpense);
+      return {
+        ...state,
+        myExpenses: filterExpense,
       };
     }
 
