@@ -13,6 +13,7 @@ import { getUserWithStoredToken } from "./store/user/action";
 import AddExpense from "./components/AddExpense";
 import History from "./Pages/History";
 import bg from "./images/bgimg.jpg";
+import AboutMe from "./Pages/AboutMe";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutMe/>}/>
         <Route path="/my_expenses" element={<MyExpenses />} />
         <Route path="/addExpenses" element={<AddExpense />} />
         <Route path="/history" element={<History />} />

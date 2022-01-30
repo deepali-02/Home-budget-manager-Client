@@ -66,6 +66,7 @@ export default function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavbarItem style={{ Text }} path="/" linkText="Home" />
+            <NavbarItem path="/about" linkText="About Me" />
             {token ? (
               <NavbarItem path="/my_expenses" linkText="My Expenses" />
             ) : null}
