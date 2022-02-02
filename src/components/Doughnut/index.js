@@ -2,71 +2,85 @@ import React, { useEffect, useState } from "react";
 import "chart.js/auto";
 import { Card } from "react-bootstrap";
 import { Doughnut } from "react-chartjs-2";
-//import "./style.css";
-import { useSelector, useDispatch } from "react-redux";
+import "./style.css";
+import { useSelector } from "react-redux";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
+import { selectSearchMonth } from "../../store/myExpenses/selector";
 import { selectUser } from "../../store/user/selector";
 import { useNavigate } from "react-router";
 import Loading from "../Loading";
+import { MDBContainer } from "mdbreact";
 
 export default function DoughnutChart() {
   const myExpense = useSelector(selectMyExpenses);
+  console.log("My Expenses from doughnut", myExpense);
+  const monthExpense = useSelector(selectSearchMonth);
   const { budget, token } = useSelector(selectUser);
   const navigate = useNavigate();
-  const [categoryNames, setCategoryNames] = useState("");
+  let mergedCategories;
+  // console.log("Hiiiiiii");
   useEffect(() => {
     if (token === null) {
       navigate("/");
     }
   }, [token, navigate]);
 
-  //console.log("All data of myExpense selector", myExpense);
-  const mergedCategories = myExpense.reduce((acc, expense) => {
-    const categoryExist = acc.find(
-      (eachExpense) => eachExpense.categoryId === expense.categoryId
-    );
-    // console.log("Category Exist", categoryExist);
-    const updatedCategory = categoryExist
-      ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
-      : null;
-    const newAcc = updatedCategory
-      ? acc.map((eachExpense) => {
-          if (
-            parseInt(eachExpense.categoryId) ===
-            parseInt(updatedCategory.categoryId)
-          ) {
-            return updatedCategory;
-          } else {
-            return eachExpense;
-          }
-        })
-      : [...acc, expense];
-    return newAcc;
-  }, []);
+  // console.log("All data of myExpense selector", myExpense);
+  if (monthExpense.length !== 0) {
+    console.log("length ", monthExpense.length);
+    mergedCategories = monthExpense.reduce((acc, expense) => {
+      const categoryExist = acc.find(
+        (eachExpense) => eachExpense.categoryId === expense.categoryId
+      );
+      // console.log("Category Exist", categoryExist);
+      const updatedCategory = categoryExist
+        ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
+        : null;
+      const newAcc = updatedCategory
+        ? acc.map((eachExpense) => {
+            if (
+              parseInt(eachExpense.categoryId) ===
+              parseInt(updatedCategory.categoryId)
+            ) {
+              return updatedCategory;
+            } else {
+              return eachExpense;
+            }
+          })
+        : [...acc, expense];
+      return newAcc;
+    }, []);
+  } else {
+    mergedCategories = myExpense.reduce((acc, expense) => {
+      const categoryExist = acc.find(
+        (eachExpense) => eachExpense.categoryId === expense.categoryId
+      );
+      // console.log("Category Exist", categoryExist);
+      const updatedCategory = categoryExist
+        ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
+        : null;
+      const newAcc = updatedCategory
+        ? acc.map((eachExpense) => {
+            if (
+              parseInt(eachExpense.categoryId) ===
+              parseInt(updatedCategory.categoryId)
+            ) {
+              return updatedCategory;
+            } else {
+              return eachExpense;
+            }
+          })
+        : [...acc, expense];
+      return newAcc;
+    }, []);
+  }
 
   const categoryName = mergedCategories.map((nm) => nm.category.name);
-  // console.log(" Merged category", mergedCategories);
 
-  useEffect(() => {
-    console.log(mergedCategories);
-
-    if (mergedCategories.length > 0) {
-      //  setNames(mergedCategories.map((nm) => nm.category.name));
-      const categoryNames = mergedCategories.map((nm) => {
-        console.log("name of categories", nm.category.name);
-        return setCategoryNames(nm.category.name);
-      });
-    }
-  }, []);
-
-  const categoryColor = mergedCategories.map((c) => {
-    return c.category.color;
-  });
+  const categoryColor = mergedCategories.map((c) => c.category.color);
   //console.log(" category color", categoryColor);
 
-  const amt = mergedCategories.map((ex) => {
-    return ex.amount;
-  });
+  const amt = mergedCategories.map((ex) => ex.amount);
   //console.log("amount ", amt);
 
   let sum = amt.reduce((a, b) => a + b, 0);
@@ -100,6 +114,8 @@ export default function DoughnutChart() {
         color: "blue",
         fontSize: 20,
       },
+      responsive: true,
+      maintainAspectRatio: true,
     },
   };
 
@@ -108,11 +124,9 @@ export default function DoughnutChart() {
       {!expense && !options ? (
         <Loading />
       ) : (
-        <div className="dountChart">
-          <div className="mt-5" style={{ display: "flex" }}>
-            <Doughnut data={expense} options={options} />
-          </div>
-        </div>
+        <MDBContainer>
+          <Doughnut data={expense} options={options} />
+        </MDBContainer>
       )}
     </div>
   );

@@ -14,7 +14,7 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-.image {
+.image1 {
   width: 50px;
   height: 40px;
   border-radius: 10px;
@@ -25,7 +25,7 @@ tr:nth-child(even) {
   display: flex;
   justify-content: center;
   /* //margin-top: 10%; */
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   margin-right: 20%;
   margin-left: 20%;
 }

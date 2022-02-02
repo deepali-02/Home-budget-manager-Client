@@ -46,7 +46,7 @@ export const fetchMyExpenses = (id) => {
       //console.log("I am from fetchMyExpenses");
       //console.log("id", id);
       const res = await axios.get(`${apiUrl}/user/my_expenses/${id}`);
-      //console.log("My Expense", res);
+      console.log("My Expense", res);
       dispatch(myExpensesFetches(res.data));
     } catch (e) {
       console.log(e.message);

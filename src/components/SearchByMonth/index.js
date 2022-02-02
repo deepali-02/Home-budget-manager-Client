@@ -7,13 +7,13 @@ import moment from "moment";
 
 export default function SearchMonth() {
   const currentDate = new Date();
-  const currentMonth = currentDate.getMonth() + "1";
+  const currentMonth = currentDate.getMonth() + 1;
   console.log(`date= ${currentDate}, month= ${currentMonth}`);
   const [month, setMonth] = useState("");
   const dispatch = useDispatch();
   function submitForm(e) {
     e.preventDefault();
-    // console.log("sent month=", month);
+    console.log("sent month=", month);
     dispatch(expenseByMonth(month));
   }
 
@@ -34,21 +34,21 @@ export default function SearchMonth() {
 
   return (
     <div>
-      <Card style={{ width: "50rem", border: "none" }}>
+      <Card style={{ border: "none" }}>
         <Form onSubmit={submitForm}>
           <Row>
             <Col>
               <Form.Group>
                 <Form.Select
                   onChange={(event) => setMonth(event.target.value)}
-                  aria-label="Default select example"
+                  // aria-label="Default select example"
                 >
+                  <option value="">Select month</option>
                   {monthArray.map((m) => {
                     return (
                       <>
                         {m.num <= currentMonth ? (
                           <>
-                            {console.log("i am in loop", m.num)}
                             <option value={m.num}>{m.name}</option>
                           </>
                         ) : (
@@ -64,7 +64,7 @@ export default function SearchMonth() {
             </Col>
             <Col>
               <Form.Group>
-                <Button type="submit">Search by month</Button>
+                <Button type="submit">Search</Button>
               </Form.Group>
             </Col>
           </Row>

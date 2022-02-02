@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCategory } from "../../store/myExpenses/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import BarChart1 from "../../components/BarChart";
+import BarChart2 from "../../components/BarChart2";
 import { Card, Form, Image, Container, Button } from "react-bootstrap";
 import "./style.css";
 import { useEffect } from "react";
@@ -39,7 +40,11 @@ export default function History() {
   return (
     <div>
       <div>
-        <Container className="mt-5 mb-5" style={{ width: "60rem" }}>
+        <Container
+          fluid
+          className="mt-5 mb-5"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
           <SearchMonth />
         </Container>
       </div>
@@ -56,7 +61,7 @@ export default function History() {
           </div>
         ) : (
           <div>
-            <h1>History page</h1>
+            <h1>History of your Expenses</h1>
 
             <div className="table-container">
               {monthExpense.length !== 0 ? (
@@ -72,7 +77,11 @@ export default function History() {
                     {monthExpense.map((ex) => (
                       <tr>
                         <td>
-                          <img class="image" src={ex.category.logoUrl} alt="" />
+                          <img
+                            className="image1"
+                            src={ex.category.logoUrl}
+                            alt=""
+                          />
                         </td>
                         <td>{ex.category.name}</td>
                         <td>{ex.amount}</td>
@@ -102,7 +111,11 @@ export default function History() {
                     {expense.map((ex) => (
                       <tr>
                         <td>
-                          <img class="image" src={ex.category.logoUrl} alt="" />
+                          <img
+                            class="image1"
+                            src={ex.category.logoUrl}
+                            alt=""
+                          />
                         </td>
                         <td>{ex.category.name}</td>
                         <td>{ex.amount}</td>
@@ -123,9 +136,7 @@ export default function History() {
             </div>
             <div>
               <h3> Expense history as per categories</h3>
-              <div style={{ marginLeft: "20%", marginTop: "5%" }}>
-                <BarChart1 />
-              </div>
+              <BarChart2 />
             </div>
           </div>
         )}

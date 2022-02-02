@@ -1,9 +1,16 @@
-.dountChart {
-  /* text-align: center; */
+/* .dountChart {
+  /* text-align: center; 
   align-items: center;
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
   margin-left: 200px;
+} */
+
+@media (max-width: 768px) {
+  .doughnut {
+    width: 100%;
+    padding: 0 20px;
+  }
 }
