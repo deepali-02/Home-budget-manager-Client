@@ -7,9 +7,12 @@ import {
   CartesianGrid,
   Bar,
 } from "recharts";
+import { ResponsiveContainer } from "recharts";
 import { useSelector } from "react-redux";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { selectUser } from "../../store/user/selector";
+import { Container } from "react-bootstrap";
+// import { MDBContainer } from "mdbreact";
 
 export default function BarChart1() {
   const myExpense = useSelector(selectMyExpenses);
@@ -55,21 +58,26 @@ export default function BarChart1() {
   console.log("expense from history", expense);
 
   return (
-    <div>
+    <Container fluid>
       <BarChart
         width={800}
         height={500}
         data={expense}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        barSize={20}
+        // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        barSize={35}
       >
-        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
-        <YAxis domain={[0, 500]} />
+        <XAxis
+          dataKey="name"
+          scale="point"
+          padding={{ left: 10, right: 10 }}
+          margin={{ left: 10, right: 20 }}
+        />
+        <YAxis domain={[0, budget]} />
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="10 10" />
         <Bar dataKey="amount" fill="#bd0b61" background={{ fill: "#eee" }} />
       </BarChart>
-    </div>
+    </Container>
   );
 }
