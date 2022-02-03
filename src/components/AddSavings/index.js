@@ -1,20 +1,25 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { newGoal } from "../../store/Goal/action";
+import { useDispatch } from "react-redux";
 
 export default function AddSavings() {
+  const dispatch = useDispatch();
+
   const [goalName, setGoalName] = useState("");
   const [targetAmount, setTargetAmount] = useState("");
   const [date, setDate] = useState("");
 
   function submitForm(e) {
     e.preventDefault();
+    dispatch(newGoal(goalName, targetAmount, date));
   }
-  
+
   return (
     <Container>
       <Row>
         <Col>
-          <Form  onSubmit={submitForm}>
+          <Form onSubmit={submitForm}>
             <Form.Group className="mt-5">
               <Form.Label>Save For </Form.Label>
               <Form.Control
@@ -46,10 +51,10 @@ export default function AddSavings() {
               />
             </Form.Group>
             <Form.Group>
-            <Button className="mt-5" type="submit">
-              Set Goal
-            </Button>
-          </Form.Group>
+              <Button className="mt-5" type="submit">
+                Set Goal
+              </Button>
+            </Form.Group>
           </Form>
         </Col>
       </Row>
