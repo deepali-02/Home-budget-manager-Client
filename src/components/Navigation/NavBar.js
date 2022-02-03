@@ -71,7 +71,7 @@ export default function NavBar() {
               <NavbarItem path="/my_expenses" linkText="My Expenses" />
             ) : null}
             {token ? <NavbarItem path="/history" linkText="History" /> : null}
-            {/* <NavbarItem path="/addExpense" linkText=""/> */}
+            {token ? <NavbarItem path="/savings" linkText="Savings" /> : null}
             {loginLogoutControls}
           </Nav>
         </Navbar.Collapse>

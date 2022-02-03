@@ -11,6 +11,7 @@ import { getCategory } from "../../store/myExpenses/action";
 import { selectCategory } from "../../store/myExpenses/selector";
 import { newExpense } from "../../store/myExpenses/action";
 import { Navigate, useNavigate } from "react-router";
+
 export default function AddExpense() {
   const [amount, setAmount] = useState(0);
   const [date, setDate] = useState(moment());

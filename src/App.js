@@ -14,6 +14,8 @@ import AddExpense from "./components/AddExpense";
 import History from "./Pages/History";
 import bg from "./images/bgimg.jpg";
 import AboutMe from "./Pages/AboutMe";
+import Saving from "./Pages/Saving";
+import AddSavings from "./components/AddSavings";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,10 +38,12 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutMe/>}/>
+        <Route path="/about" element={<AboutMe />} />
         <Route path="/my_expenses" element={<MyExpenses />} />
         <Route path="/addExpenses" element={<AddExpense />} />
         <Route path="/history" element={<History />} />
+        <Route path="/savings" element={<Saving />} />
+        <Route path="/addSavings" element={<AddSavings />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
