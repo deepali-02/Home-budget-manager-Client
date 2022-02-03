@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "chart.js/auto";
+// import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
+
 import { Card } from "react-bootstrap";
 import { Doughnut } from "react-chartjs-2";
 import "./style.css";
@@ -13,9 +15,11 @@ import { MDBContainer } from "mdbreact";
 
 export default function DoughnutChart() {
   const myExpense = useSelector(selectMyExpenses);
-  console.log("My Expenses from doughnut", myExpense);
+
   const monthExpense = useSelector(selectSearchMonth);
+  // console.log("Month Expenses from doughnut", monthExpense);
   const { budget, token } = useSelector(selectUser);
+
   const navigate = useNavigate();
   let mergedCategories;
   // console.log("Hiiiiiii");
@@ -88,7 +92,6 @@ export default function DoughnutChart() {
 
   const bal = "Balance left";
   let balance = budget - sum;
-  //console.log("balance", balance);
 
   const expense = {
     labels: [...categoryName, bal],
@@ -118,7 +121,7 @@ export default function DoughnutChart() {
       maintainAspectRatio: true,
     },
   };
-
+  // console.log(showDialog);
   return (
     <div>
       {!expense && !options ? (

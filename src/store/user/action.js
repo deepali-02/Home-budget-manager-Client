@@ -39,10 +39,10 @@ const loginSuccess = (userWithToken) => {
           dispatch(appDoneLoading());
         } catch (error) {
           if (error.response) {
-            console.log(error.response.data.message);
+            // console.log(error.response.data.message);
             dispatch(setMessage("danger", true, error.response.data.message));
           } else {
-            console.log(error.message);
+            // console.log(error.message);
             dispatch(setMessage("danger", true, error.message));
           }
           dispatch(appDoneLoading());
@@ -57,15 +57,15 @@ export const login=(email, password)=> {
         email,
         password,
       });
-      console.log("response from login", res);
+      // console.log("response from login", res);
       dispatch(loginSuccess(res.data))
       dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message);
+        // console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
       } else {
-        console.log(error.message);
+        // console.log(error.message);
         dispatch(setMessage("danger", true, error.message));
       }
     }
