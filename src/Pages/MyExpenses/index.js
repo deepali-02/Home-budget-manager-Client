@@ -14,8 +14,7 @@ import DoughnutChart from "../../components/Doughnut";
 import Button from "react-bootstrap/Button";
 import AddExpense from "../../components/AddExpense";
 import { useNavigate } from "react-router";
-import { Container } from "@material-ui/core";
-
+import { Container, Row, Col, ProgressBar } from "react-bootstrap";
 
 export default function MyExpenses() {
   const dispatch = useDispatch();
@@ -42,14 +41,37 @@ export default function MyExpenses() {
   const amt = myExpense.map((ex) => ex.amount);
   // console.log("hello amount", amt);
   let sum = amt.reduce((a, b) => a + b, 0);
+  let balance = budget - sum;
   // console.log("Hello Sum", sum);
   // console.log("budget", budget);
   let overbudget = sum >= budget;
   return (
-    <Container fluid style={{ width: "40rem", justifyContent: "center" }}>
+    <Container fluid style={{ justifyContent: "center" }}>
       <h1>Track your monthly expense!</h1>
-
-      <DoughnutChart />
+      <Row className="mt-5" xs="auto">
+        <Col md={{ span: 4, offset: 4 }}>
+          <ProgressBar
+            striped variant="danger"
+            style={{ height: "50px", backgroundColor: "#EFF4A2" }}
+            now={sum}
+            label={`${sum}%`}
+          />
+        </Col>
+        <Col>
+          <Button
+            size="lg"
+            // className="mt-3"
+            onClick={overbudget ? open : () => navigate("/addExpenses")}
+          >
+            Add Expenses
+          </Button>
+        </Col>
+      </Row>
+      <Row className="mt-5">
+        <Col md={{ span: 4, offset: 4 }}>
+          <DoughnutChart />
+        </Col>
+      </Row>
 
       <div>
         {/* <Button className="mt-5" onClick={() => navigate("/addExpenses")}>
@@ -57,13 +79,13 @@ export default function MyExpenses() {
         </Button>
         <br />
         <br /> */}
-        <Button
+        {/* <Button
           className="mt-5"
           onClick={overbudget ? open : () => navigate("/addExpenses")}
         >
           Add Expenses
         </Button>
-        {console.log("show:", showDialog)}
+        {console.log("show:", showDialog)} */}
         {showDialog && (
           <Dialog onDismiss={close}>
             <p>

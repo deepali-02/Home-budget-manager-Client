@@ -127,9 +127,12 @@ export default function DoughnutChart() {
       {!expense && !options ? (
         <Loading />
       ) : (
+        <>
+        
         <MDBContainer>
           <Doughnut data={expense} options={options} />
         </MDBContainer>
+        </>
       )}
     </div>
   );

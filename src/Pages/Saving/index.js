@@ -40,7 +40,7 @@ export default function Saving() {
         </Container>
       ) : (
         <Container fluid>
-          <Row className="mb-5">
+          <Row className="mb-5 ">
             <Col>
               <Button
                 variant="warning"
@@ -55,7 +55,7 @@ export default function Saving() {
             <>
               <Row
                 md={4}
-                className="mb-3 mt-3"
+                className="mb-3 mt-3 justify-content-md-center"
                 style={{
                   borderStyle: "groove",
                   backgroundColor: "#E3C565",
@@ -63,13 +63,15 @@ export default function Saving() {
                 }}
               >
                 <Col
+                  xs
+                  lg="2"
                   className="mt-3"
                   style={{ textAlign: "left", backgroundColor: "#E3C565" }}
                 >
                   <b>{goal.goal_name}</b>
                 </Col>
                 <Col
-                  // xs={6}
+                  md="auto"
                   className="mt-3"
                   style={{ backgroundColor: "#E3C565" }}
                 >
@@ -79,6 +81,8 @@ export default function Saving() {
                   <b>Saved: {goal.saved_amount}</b>
                 </Col>
                 <Col
+                  xs
+                  lg="2"
                   className="mt-3"
                   style={{ backgroundColor: "#E3C565", textAlign: "right" }}
                 >
