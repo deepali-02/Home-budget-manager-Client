@@ -76,9 +76,9 @@ export default function BarChart2() {
     labels: categoryName,
     datasets: [
       {
-        label: "Hours Studied in Geeksforgeeks",
+        label: "Expenses per category",
         data: amt,
-        backgroundColor: "#02b844",
+        backgroundColor: "#1EE59B",
         borderWidth: 1,
         borderColor: "#000000",
       },
