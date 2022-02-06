@@ -1,12 +1,17 @@
 import { Container } from "react-bootstrap";
 import img1 from "../../images/moneyslides_800x600.gif";
 import logo from "../../images/HBM.jpeg";
-import { Card } from "react-bootstrap";
+import { Card, Row, Image, Col } from "react-bootstrap";
 
 export default function HomePage() {
   return (
-    <div>
-      <Container>
+    <>
+      {/* <Container> */}
+      {/* <Card> */}
+      {/* <Card.Header> */}
+
+      {/* </Card.Header> */}
+      <Row className="mb-5" style={{ backgroundColor: "#E5D04A " }}>
         <h1>
           <img
             src={logo}
@@ -20,19 +25,20 @@ export default function HomePage() {
           />{" "}
           Welcome to Home Budget Manager
         </h1>
-        <div className="color-overlay d-flex justify content center align-items-center">
-          <Card
-            style={{
-              width: "80%",
-              marginRight: "20%",
-              marginLeft: "20%",
-              border: "none",
-            }}
-          >
-            <img src={img1} style={{ borderRadius: "20px" }} alt="" />
-          </Card>
-        </div>
-      </Container>
-    </div>
+      </Row>
+
+      {/* <Container fluid> */}
+      <Row sx="auto" style={{ justifyContent: "center" }}>
+        <Col>
+          <Image
+            thumbnail
+            src={img1}
+            style={{ borderRadius: "20px", border: "none" }}
+            alt=""
+          />
+        </Col>
+      </Row>
+      {/* </Container> */}
+    </>
   );
 }
