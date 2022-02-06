@@ -16,6 +16,8 @@ import bg from "./images/bgimg.jpg";
 import AboutMe from "./Pages/AboutMe";
 import Saving from "./Pages/Saving";
 import AddSavings from "./components/AddSavings";
+import BarChart1 from "./components/BarChart";
+import BarChart2 from "./components/BarChart2";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +46,8 @@ function App() {
         <Route path="/history" element={<History />} />
         <Route path="/savings" element={<Saving />} />
         <Route path="/addSavings" element={<AddSavings />} />
+        <Route path="/barchart1" element={<BarChart1 />} />
+        <Route path="/barchart2" element={<BarChart2 />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
