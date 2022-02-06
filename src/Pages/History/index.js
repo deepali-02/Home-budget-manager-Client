@@ -3,9 +3,18 @@ import { selectCategory } from "../../store/myExpenses/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import BarChart1 from "../../components/BarChart";
 import BarChart2 from "../../components/BarChart2";
-import { Card, Form, Image, Container, Button } from "react-bootstrap";
+import {
+  Card,
+  Form,
+  Image,
+  Container,
+  Button,
+  Dropdown,
+  Row,
+  DropdownButton,
+} from "react-bootstrap";
 import "./style.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchMyExpenses } from "../../store/myExpenses/action";
 import { selectUser } from "../../store/user/selector";
 import { useNavigate } from "react-router";
@@ -18,6 +27,8 @@ export default function History() {
   const dispatch = useDispatch();
   const { id, token } = useSelector(selectUser);
   const navigate = useNavigate();
+
+  const [mode, setMode] = useState(true);
 
   const expense = useSelector(selectMyExpenses);
   const monthExpense = useSelector(selectSearchMonth);
@@ -37,12 +48,16 @@ export default function History() {
     dispatch(deleteExpense(id));
   };
 
+  const handleSelect = (e) => {
+    setMode(e);
+  };
+
   return (
     <div>
       <div>
         <Container
           fluid
-          className="mt-5 mb-5"
+          className="mb-5"
           style={{ display: "flex", justifyContent: "center" }}
         >
           <SearchMonth />
@@ -53,16 +68,17 @@ export default function History() {
           <div>
             <Image
               src={testImg}
-              style={{ width: "50%" }}
+              style={{ width: "40%" }}
               fluid
               alt="No History image"
             />
-            <h2>Please add expenses to see History</h2>
+            <h1>Please add expenses to see History</h1>
           </div>
         ) : (
           <div>
-            <h1>History of your Expenses</h1>
-
+            <Row className="mb-5" style={{ backgroundColor: "#E5D04A " }}>
+              <h1>History of your Expenses</h1>
+            </Row>
             <div className="table-container">
               {monthExpense.length !== 0 ? (
                 <>
@@ -84,7 +100,7 @@ export default function History() {
                           />
                         </td>
                         <td>{ex.category.name}</td>
-                        <td>{ex.amount}</td>
+                        <td>{ex.amount}€</td>
                         <td>{ex.date}</td>
                         <td>
                           <Button
@@ -118,7 +134,7 @@ export default function History() {
                           />
                         </td>
                         <td>{ex.category.name}</td>
-                        <td>{ex.amount}</td>
+                        <td>{ex.amount}€</td>
                         <td>{ex.date}</td>
                         <td>
                           <Button
@@ -135,8 +151,28 @@ export default function History() {
               )}
             </div>
             <div>
-              <h3> Expense history as per categories</h3>
-              <BarChart2 />
+              <Container>
+                <Row style={{ backgroundColor: "#E5D04A " }}>
+                  <h3> Expense history as per categories</h3>
+                </Row>
+                <Row className="mt-5">
+                  <DropdownButton
+                    title="Select BarChart"
+                    className="mb-3"
+                    onSelect={handleSelect}
+                  >
+                    {/* <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      Choose BarChart
+                    </Dropdown.Toggle> */}
+
+                    <Dropdown.Item eventKey={true}>BarChart 1</Dropdown.Item>
+                    <Dropdown.Item eventKey={false}>BarChart 2</Dropdown.Item>
+                  </DropdownButton>
+                </Row>
+                <Row className="mt-5">
+                  {mode === "true" ? <BarChart1 /> : <BarChart2 />}
+                </Row>
+              </Container>
             </div>
           </div>
         )}
