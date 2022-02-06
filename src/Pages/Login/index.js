@@ -25,7 +25,7 @@ export default function Login() {
 
   useEffect(() => {
     if (token !== null) {
-      navigate("/");
+      navigate("/my_expenses");
     }
   }, [token, navigate]);
 
@@ -39,17 +39,17 @@ export default function Login() {
     setPassword("");
   }
   return (
-    <Row>
-      <Col>
-        <div className="color-overlay d-flex justify content center align-items-center">
+    <Container>
+      <Row>
+        <Col className="mt-5">
           <Form
-            // className="rounded p-4 p-sm-3"
-            style={{
-              width: "80%",
-              marginTop: "10%",
-              marginLeft: "10%",
+          className="mt-5"
+            // style={{
+            //   width: "80%",
+            //   marginTop: "10%",
+            //   marginLeft: "10%",
               // boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.2)",
-            }}
+            // }}
           >
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -91,19 +91,13 @@ export default function Login() {
               </Link>
             </Form.Group>
           </Form>
-        </div>
-      </Col>
-      <Col>
-        <div className="color-overlay d-flex justify content center align-items-center">
+        </Col>
+        <Col sm>
           {/* <Card style={{ width: "80%", marginRight: "20%", marginLeft: "20%" }}> */}
-          <Image
-            src={loginImg}
-            fluid
-            style={{ border: "none", marginBottom: "10%" }}
-          />
+          <Image src={loginImg} fluid style={{ border: "none" }} />
           {/* </Card> */}
-        </div>
-      </Col>
-    </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 }
