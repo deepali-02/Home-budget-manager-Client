@@ -34,7 +34,7 @@ export default function SearchMonth() {
 
   return (
     <div>
-      <Card style={{ border: "none" }}>
+      <Card style={{ border: "none", background:"none" }}>
         <Form onSubmit={submitForm}>
           <Row>
             <Col>

@@ -54,15 +54,15 @@ export default function History() {
 
   return (
     <div>
-      <div>
-        <Container
-          fluid
-          className="mb-5"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <SearchMonth />
-        </Container>
-      </div>
+      {/* <div> */}
+      <Container
+        fluid
+        className="mb-5"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <SearchMonth />
+      </Container>
+      {/* </div> */}
       <div>
         {expense.length === 0 ? (
           <div>
@@ -99,8 +99,8 @@ export default function History() {
                             alt=""
                           />
                         </td>
-                        <td>{ex.category.name}</td>
-                        <td>{ex.amount}€</td>
+                        <td>{ex.category.name} </td>
+                        <td>{ex.amount} €</td>
                         <td>{ex.date}</td>
                         <td>
                           <Button
@@ -134,7 +134,7 @@ export default function History() {
                           />
                         </td>
                         <td>{ex.category.name}</td>
-                        <td>{ex.amount}€</td>
+                        <td>{ex.amount}</td>
                         <td>{ex.date}</td>
                         <td>
                           <Button
