@@ -4,7 +4,8 @@
   text-align: center;
 }
 
-h1,h3 {
+h1,
+h3 {
   color: purple;
   /* font-style: italic; */
   font-family: "Playfair Display";
@@ -15,3 +16,9 @@ h1,h3 {
   background-repeat: no-repeat;
   background-size: cover;
 } */
+
+body {
+  background-image: url("./images/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
