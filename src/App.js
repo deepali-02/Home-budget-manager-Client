@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/action";
 import AddExpense from "./components/AddExpense";
 import History from "./Pages/History";
+import DetailSavings from "./Pages/DetailSavingPage";
 import bg from "./images/bgimg.jpg";
 import AboutMe from "./Pages/AboutMe";
 import Saving from "./Pages/Saving";
@@ -45,6 +46,7 @@ function App() {
         <Route path="/addExpenses" element={<AddExpense />} />
         <Route path="/history" element={<History />} />
         <Route path="/savings" element={<Saving />} />
+        <Route path="/detail_savings/:id" element={<DetailSavings />} />
         <Route path="/addSavings" element={<AddSavings />} />
         <Route path="/barchart1" element={<BarChart1 />} />
         <Route path="/barchart2" element={<BarChart2 />} />
