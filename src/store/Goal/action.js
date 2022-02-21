@@ -38,7 +38,7 @@ export const newGoal = (goal_name, target_amount, desire_date) => {
       console.log("I am from new expense function");
       const { id } = selectUser(getState());
       console.log("id from goal", id);
-      const response = await axios.post(`${apiUrl}/user/savings/${id}`, {
+      const response = await axios.post(`${apiUrl}/user/new_savings/${id}`, {
         goal_name,
         target_amount,
         desire_date,
