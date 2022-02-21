@@ -8,6 +8,7 @@ import { selectToken } from "../../store/user/selector";
 import moment from "moment";
 
 import testImg from "../../images/test.png";
+import { Link } from "react-router-dom";
 
 export default function Saving() {
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ export default function Saving() {
 
   const goals = useSelector(selectGoals);
   const token = useSelector(selectToken);
-  console.log("token", token);
 
   useEffect(() => {
     if (token === null) {
@@ -93,11 +93,14 @@ export default function Saving() {
                 className="mt-3"
                 style={{ backgroundColor: "#E3C565", textAlign: "right" }}
               >
-                <Button
-                  style={{ borderRadius: "50%", justifyContent: "right" }}
-                >
-                  <h3>+</h3>
-                </Button>
+                {console.log("goal id =", goal.id)}
+                <Link to={`/detail_savings/${goal.id}`}>
+                  <Button
+                    style={{ borderRadius: "50%", justifyContent: "right" }}
+                  >
+                    <h3>+</h3>
+                  </Button>
+                </Link>
               </Col>
             </Row>
           ))}
