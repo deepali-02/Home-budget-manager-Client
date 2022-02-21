@@ -12,7 +12,7 @@ export default function HomePage() {
 
       {/* </Card.Header> */}
       <Row className="mb-5" style={{ backgroundColor: "#E5D04A " }}>
-        <h1>
+        <h1 data-text="Spotlight">
           <img
             src={logo}
             style={{

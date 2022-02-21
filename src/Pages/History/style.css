@@ -4,7 +4,7 @@ table {
 }
 
 th,
-td :hover {
+td :hover { 
   text-align: left;
   padding: 8px;
   background: rgb(25, 194, 216);
@@ -24,7 +24,7 @@ tr:nth-child(even) {
 .table-container {
   display: flex;
   justify-content: center;
-  /* //margin-top: 10%; */
+  
   margin-bottom: 5%;
   margin-right: 20%;
   margin-left: 20%;
