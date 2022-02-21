@@ -24,7 +24,7 @@ const newGoalAdded = (goal) => {
         //console.log("I am from fetchMyExpenses");
         //console.log("id", id);
         const res = await axios.get(`${apiUrl}/user/${id}/savings`);
-        console.log("My Goal", res);
+        // console.log("My Goal", res);
         dispatch(goalFetches(res.data));
       } catch (e) {
         console.log(e.message);
@@ -35,7 +35,7 @@ const newGoalAdded = (goal) => {
 export const newGoal = (goal_name, target_amount, desire_date) => {
   return async (dispatch, getState) => {
     try {
-      console.log("I am from new expense function");
+      // console.log("I am from new expense function");
       const { id } = selectUser(getState());
       console.log("id from goal", id);
       const response = await axios.post(`${apiUrl}/user/new_savings/${id}`, {
@@ -43,10 +43,22 @@ export const newGoal = (goal_name, target_amount, desire_date) => {
         target_amount,
         desire_date,
       });
-      console.log("New Goal", response);
+      // console.log("New Goal", response);
       dispatch(newGoalAdded(response.data));
     } catch (e) {
       console.log(e.message);
     }
   };
 };
+
+export const detailsaving = (id)=>{
+  return async (dispatch,getState)=>{
+    try{
+        const res = await axios.get(`${apiUrl}/user/savings/${id}`)
+        console.log("Savings Details", res)
+
+    }catch (e) {
+      console.log(e.message);
+    }
+  }
+}
