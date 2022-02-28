@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { fetchMyExpenses } from "../../store/myExpenses/action";
 import { selectUser } from "../../store/user/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
@@ -18,7 +18,7 @@ import { Container, Row, Col, ProgressBar } from "react-bootstrap";
 export default function MyExpenses() {
   const dispatch = useDispatch();
   const { id, budget } = useSelector(selectUser);
-  
+
   const [showDialog, setShowDialog] = React.useState(false);
   const open = () => setShowDialog(true);
   const close = () => setShowDialog(false);
