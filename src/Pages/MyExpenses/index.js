@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import { useParams } from "react-router";
 import { fetchMyExpenses } from "../../store/myExpenses/action";
 import { selectUser } from "../../store/user/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
