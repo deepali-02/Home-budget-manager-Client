@@ -1,7 +1,6 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import "chart.js/auto";
 // import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
-
 
 import { Doughnut } from "react-chartjs-2";
 import "./style.css";
@@ -17,7 +16,7 @@ export default function DoughnutChart() {
   const myExpense = useSelector(selectMyExpenses);
 
   const monthExpense = useSelector(selectSearchMonth);
-  // console.log("Month Expenses from doughnut", monthExpense);
+  console.log("Month Expenses from doughnut", monthExpense);
   const { budget, token } = useSelector(selectUser);
 
   const navigate = useNavigate();
@@ -128,10 +127,9 @@ export default function DoughnutChart() {
         <Loading />
       ) : (
         <>
-        
-        <MDBContainer>
-          <Doughnut data={expense} options={options} />
-        </MDBContainer>
+          <MDBContainer>
+            <Doughnut data={expense} options={options} />
+          </MDBContainer>
         </>
       )}
     </div>
