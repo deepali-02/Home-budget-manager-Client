@@ -38,7 +38,7 @@ export default function History() {
       navigate("/");
     }
     dispatch(fetchMyExpenses(id));
-  }, []);
+  }, [dispatch, id, navigate, token]);
 
   const onDeleteClick = (id) => {
     console.log("story to be deleted!");

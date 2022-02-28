@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
+import { useParams } from "react-router";
 import { fetchMyExpenses } from "../../store/myExpenses/action";
 import { selectUser } from "../../store/user/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
@@ -25,7 +26,7 @@ export default function MyExpenses() {
 
   const myExpense = useSelector(selectMyExpenses);
   const monthExpense = useSelector(selectSearchMonth);
-  // console.log("hello expense", myExpense);
+  console.log("hello expense", myExpense);
   useEffect(() => {
     console.log("I am from useEffect");
     console.log("id from myExpense page", id);
