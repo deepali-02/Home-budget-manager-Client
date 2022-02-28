@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
-import { BarChart } from "recharts";
+
 import { MDBContainer } from "mdbreact";
 
 // import { useNavigate } from "react-router";

@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Card, Form, Row, Col, Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { selectMyExpenses } from "../../store/myExpenses/selector";
+import { useDispatch } from "react-redux";
+
 import { expenseByMonth } from "../../store/myExpenses/action";
-import moment from "moment";
 
 export default function SearchMonth() {
   const currentDate = new Date();
@@ -34,7 +33,7 @@ export default function SearchMonth() {
 
   return (
     <div>
-      <Card style={{ border: "none", background:"none" }}>
+      <Card style={{ border: "none", background: "none" }}>
         <Form onSubmit={submitForm}>
           <Row>
             <Col>

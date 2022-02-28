@@ -13,7 +13,6 @@ import { getUserWithStoredToken } from "./store/user/action";
 import AddExpense from "./components/AddExpense";
 import History from "./Pages/History";
 import DetailSavings from "./Pages/DetailSavingPage";
-import bg from "./images/bgimg.jpg";
 import AboutMe from "./Pages/AboutMe";
 import Saving from "./Pages/Saving";
 import AddSavings from "./components/AddSavings";

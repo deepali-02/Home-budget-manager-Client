@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Form,
-  Button,
-  Col,
-  Row,
-  Container,
-  Card,
-  Image,
-} from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 
@@ -43,12 +35,12 @@ export default function Login() {
       <Row>
         <Col className="mt-5">
           <Form
-          className="mt-5"
+            className="mt-5"
             // style={{
             //   width: "80%",
             //   marginTop: "10%",
             //   marginLeft: "10%",
-              // boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.2)",
+            // boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.2)",
             // }}
           >
             <Form.Group className="mb-3" controlId="formBasicEmail">

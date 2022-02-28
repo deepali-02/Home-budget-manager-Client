@@ -7,7 +7,7 @@ import {
   CartesianGrid,
   Bar,
 } from "recharts";
-import { ResponsiveContainer } from "recharts";
+
 import { useSelector } from "react-redux";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { selectUser } from "../../store/user/selector";

@@ -16,6 +16,6 @@ export default function DetailSavings() {
       navigate("/");
     }
     dispatch(detailsaving(id));
-  }, []);
+  }, [dispatch, id, navigate, token]);
   return <div>Savings Details</div>;
 }

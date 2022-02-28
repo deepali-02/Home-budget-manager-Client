@@ -1,7 +1,7 @@
-import { Container } from "react-bootstrap";
+
 import img1 from "../../images/moneyslides_800x600.gif";
 import logo from "../../images/HBM.jpeg";
-import { Card, Row, Image, Col } from "react-bootstrap";
+import { Row, Image, Col } from "react-bootstrap";
 
 export default function HomePage() {
   return (

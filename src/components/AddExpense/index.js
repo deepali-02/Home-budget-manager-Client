@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Card,
   Form,
   Button,
   Container,
@@ -18,9 +17,9 @@ import {
 import { getCategory } from "../../store/myExpenses/action";
 import { selectCategory } from "../../store/myExpenses/selector";
 import { newExpense } from "../../store/myExpenses/action";
-import { Navigate, useNavigate } from "react-router";
+import {  useNavigate } from "react-router";
 import img from "../../images/giphy.gif";
-import { selectToken, selectUser } from "../../store/user/selector";
+import { selectUser } from "../../store/user/selector";
 
 export default function AddExpense() {
   const [amount, setAmount] = useState(0);

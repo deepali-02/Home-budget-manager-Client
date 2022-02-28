@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import "chart.js/auto";
 // import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
 
-import { Card } from "react-bootstrap";
+
 import { Doughnut } from "react-chartjs-2";
 import "./style.css";
 import { useSelector } from "react-redux";

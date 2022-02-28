@@ -1,11 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectCategory } from "../../store/myExpenses/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import BarChart1 from "../../components/BarChart";
 import BarChart2 from "../../components/BarChart2";
 import {
-  Card,
-  Form,
   Image,
   Container,
   Button,
