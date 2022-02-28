@@ -16,6 +16,13 @@ const newGoalAdded = (goal) => {
     };
   };
 
+const savingDetail = (goal_detail)=>{
+  return {
+    type : "DETAIL_SAVING",
+    payload: goal_detail
+  }
+} 
+
 
   export const fetchGoal = () => {
     return async (dispatch, getState) => {
@@ -56,7 +63,7 @@ export const detailsaving = (id)=>{
     try{
         const res = await axios.get(`${apiUrl}/user/savings/${id}`)
         console.log("Savings Details", res)
-
+        dispatch(savingDetail(res.data))
     }catch (e) {
       console.log(e.message);
     }
