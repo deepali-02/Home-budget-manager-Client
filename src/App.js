@@ -15,7 +15,8 @@ import History from "./Pages/History";
 import DetailSavings from "./Pages/DetailSavingPage";
 import AboutMe from "./Pages/AboutMe";
 import Saving from "./Pages/Saving";
-import AddSavings from "./components/AddSavings";
+import AddSavingsGoal from "./components/AddSavingsGoal";
+import AddToSaving from "./components/AddToSaving";
 import BarChart1 from "./components/BarChart";
 import BarChart2 from "./components/BarChart2";
 
@@ -46,7 +47,8 @@ function App() {
         <Route path="/history" element={<History />} />
         <Route path="/savings" element={<Saving />} />
         <Route path="/detail_savings/:id" element={<DetailSavings />} />
-        <Route path="/addSavings" element={<AddSavings />} />
+        <Route path="/addSavingsGoal" element={<AddSavingsGoal />} />
+        <Route path="/addToSaving" element={<AddToSaving />} />
         <Route path="/barchart1" element={<BarChart1 />} />
         <Route path="/barchart2" element={<BarChart2 />} />
         <Route path="/login" element={<Login />} />
