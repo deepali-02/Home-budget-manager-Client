@@ -1,4 +1,5 @@
 import { apiUrl } from "../../config/constants";
+import { selectGoalDetails } from "./selector";
 import axios from "axios";
 import { selectUser } from "../user/selector";
 
@@ -20,6 +21,13 @@ const savingDetail = (goal_detail) => {
   return {
     type: "DETAIL_SAVING",
     payload: goal_detail,
+  };
+};
+
+const amountUpdated = (amount) => {
+  return {
+    type: "UPDATE AMOUNT",
+    payload: amount,
   };
 };
 
@@ -61,8 +69,23 @@ export const detailsaving = (id) => {
   return async (dispatch, getState) => {
     try {
       const res = await axios.get(`${apiUrl}/user/savings/${id}`);
-      // console.log("Savings Details", res)
+      // console.log("Savings Details", res);
       dispatch(savingDetail(res.data));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
+
+export const addToSave = (saved_amount) => {
+  return async (dispatch, getState) => {
+    try {
+      const goal = selectGoalDetails(getState());
+      const res = await axios.patch(`${apiUrl}/user/addSaving/${goal.id}`, {
+        saved_amount,
+      });
+      console.log("Amount updated? ", res);
+      dispatch(amountUpdated(res.data.saved_amount));
     } catch (e) {
       console.log(e.message);
     }

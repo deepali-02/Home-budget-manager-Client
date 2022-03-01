@@ -1,6 +1,7 @@
 const initialState = {
   goals: [],
-  goal_detail: {},
+  details: {},
+  // goal_detail: {},
 };
 
 export default function goalReducer(state = initialState, action) {
@@ -21,7 +22,15 @@ export default function goalReducer(state = initialState, action) {
     case "DETAIL_SAVING": {
       return {
         ...state,
-        goal_detail: { ...action.payload },
+        details: { ...action.payload },
+      };
+    }
+
+    case "UPDATE AMOUNT": {
+      return {
+        ...state,
+        ...state.goals,
+        details: { ...state.details, saved_amount: action.payload  },
       };
     }
 

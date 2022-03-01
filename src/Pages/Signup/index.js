@@ -10,7 +10,7 @@ import {
   Row,
   Image,
   Container,
-
+  
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { signUp } from "../../store/user/action";
