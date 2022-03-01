@@ -7,7 +7,7 @@
 h1,
 h3 {
   color: purple;
-  
+
   font-family: "Playfair Display";
 }
 
@@ -17,8 +17,8 @@ h3 {
   background-size: cover;
 } */
 
-body {
+/* body {
   background-image: url("./images/bg.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
