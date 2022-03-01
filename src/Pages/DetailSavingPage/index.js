@@ -10,7 +10,7 @@ export default function DetailSavings() {
   const navigate = useNavigate();
   const token = useSelector(selectToken);
   const { id } = useParams();
-  console.log("Id from saving detail page", id);
+  // console.log("Id from saving detail page", id);
   useEffect(() => {
     if (token === null) {
       navigate("/");
