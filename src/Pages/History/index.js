@@ -29,7 +29,7 @@ export default function History() {
 
   const expense = useSelector(selectMyExpenses);
   const monthExpense = useSelector(selectSearchMonth);
-  console.log("Expenses from history", expense);
+  // console.log("selected month Expenses from history", monthExpense);
 
   useEffect(() => {
     //console.log("I am from useEffect");
@@ -41,7 +41,7 @@ export default function History() {
   }, [dispatch, id, navigate, token]);
 
   const onDeleteClick = (id) => {
-    console.log("story to be deleted!");
+    // console.log("story to be deleted!");
     dispatch(deleteExpense(id));
   };
 
