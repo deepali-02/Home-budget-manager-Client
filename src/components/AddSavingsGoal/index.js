@@ -4,7 +4,7 @@ import { newGoal } from "../../store/Goal/action";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
-export default function AddSavings() {
+export default function AddSavingsGoal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
