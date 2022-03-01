@@ -69,7 +69,7 @@ export default function AddExpense() {
                   value={amount}
                   onChange={(event) => setAmount(event.target.value)}
                   type="number"
-                  min="1"
+                  // min="1"
                   required
                 />
               </Form.Group>
