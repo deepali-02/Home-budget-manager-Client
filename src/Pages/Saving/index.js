@@ -66,7 +66,7 @@ export default function Saving() {
               className="mb-3 mt-3 justify-content-md-center"
               style={{
                 borderStyle: "groove",
-                backgroundColor: "#E3C565",
+                backgroundColor: "#82EEFD",
                 height: "5rem",
                 marginLeft: "10%",
                 marginRight: "10%",
@@ -74,14 +74,14 @@ export default function Saving() {
             >
               <Col
                 className="mt-3"
-                style={{ textAlign: "left", backgroundColor: "#E3C565" }}
+                style={{ textAlign: "left", backgroundColor: "#82EEFD" }}
               >
                 <b>{goal.goal_name}</b>
               </Col>
-              <Col className="mt-3" style={{ backgroundColor: "#E3C565" }}>
+              <Col className="mt-3" style={{ backgroundColor: "#82EEFD" }}>
                 <b>Target: {goal.target_amount}€</b>
               </Col>
-              <Col className="mt-3" style={{ backgroundColor: "#E3C565" }}>
+              <Col className="mt-3" style={{ backgroundColor: "#82EEFD" }}>
                 <b>
                   Desire date: {moment(goal.desire_date).format("DD/MM/YYYY")}
                 </b>
@@ -91,9 +91,9 @@ export default function Saving() {
               </Col>
               <Col
                 className="mt-3"
-                style={{ backgroundColor: "#E3C565", textAlign: "right" }}
+                style={{ backgroundColor: "#82EEFD", textAlign: "right" }}
               >
-                {console.log("goal id =", goal.id)}
+                {/* {console.log("goal id =", goal.id)} */}
                 <Link to={`/detail_savings/${goal.id}`}>
                   <Button
                     style={{ borderRadius: "50%", justifyContent: "right" }}
