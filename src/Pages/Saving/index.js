@@ -39,7 +39,7 @@ export default function Saving() {
           </Row>
           <Row className="justify-content-md-center">
             <Col>
-              <Button onClick={() => navigate("/addSavings")}>
+              <Button onClick={() => navigate("/addSavingsGoal")}>
                 Set saving goals
               </Button>
             </Col>
@@ -58,10 +58,10 @@ export default function Saving() {
               </Button>
             </Col>
           </Row>
-          <Row xs={1} md={3} >
-          {goals.map((goal) => (
-            <>
-              {/* <Row
+          <Row xs={1} md={3}>
+            {goals.map((goal) => (
+              <>
+                {/* <Row
                 xs={2}
                 md={4}
                 lg={6}
@@ -91,20 +91,20 @@ export default function Saving() {
                   </Link>
                 </Col>
               </Row> */}
-              <Container>
-                <Col>
-                <Card className="mb-5" bg="info" style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <Card.Title>{goal.goal_name}</Card.Title>
-                    <Link to={`/detail_savings/${goal.id}`}>
-                      <Button variant="primary">Show details</Button>
-                    </Link>
-                  </Card.Body>
-                </Card>
-                </Col>
-              </Container>
-            </>
-          ))}
+                <Container>
+                  <Col>
+                    <Card className="mb-5" bg="info" style={{ width: "18rem" }}>
+                      <Card.Body>
+                        <Card.Title>{goal.goal_name}</Card.Title>
+                        <Link to={`/detail_savings/${goal.id}`}>
+                          <Button variant="primary">Show details</Button>
+                        </Link>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Container>
+              </>
+            ))}
           </Row>
         </Container>
       )}
