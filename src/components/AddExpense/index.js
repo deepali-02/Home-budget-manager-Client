@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Form,
-  Button,
-  Container,
-  Row,
-  Col,
-  Image,
-} from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Image } from "react-bootstrap";
 import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import {
@@ -17,7 +10,7 @@ import {
 import { getCategory } from "../../store/myExpenses/action";
 import { selectCategory } from "../../store/myExpenses/selector";
 import { newExpense } from "../../store/myExpenses/action";
-import {  useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import img from "../../images/giphy.gif";
 import { selectUser } from "../../store/user/selector";
 
@@ -69,7 +62,7 @@ export default function AddExpense() {
                   value={amount}
                   onChange={(event) => setAmount(event.target.value)}
                   type="number"
-                  // min="1"
+                  min="0"
                   required
                 />
               </Form.Group>
