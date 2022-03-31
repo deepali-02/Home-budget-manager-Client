@@ -61,48 +61,24 @@ export default function Saving() {
           <Row xs={1} md={3}>
             {goals.map((goal) => (
               <>
-                {/* <Row
-                xs={2}
-                md={4}
-                lg={6}
-                // md={4}
-                // lg={6}
-                // className="justify-content-md-center"
-                style={{
-                  borderStyle: "groove",
-                  backgroundColor: "#82EEFD",
-                  // height: "5rem",
-                  // marginLeft: "10%",
-                  // marginRight: "50%",
-                }}
-              >
-                <Col style={{ textAlign: "right", backgroundColor: "#82EEFD" }}>
-                  <b>{goal.goal_name}</b>
-                </Col>
-
-                <Col style={{ backgroundColor: "#82EEFD", textAlign: "right" }}>
-                
-                  <Link to={`/detail_savings/${goal.id}`}>
-                    <Button
-                      style={{ borderRadius: "50%", justifyContent: "right" }}
-                    >
-                      <h3>+</h3>
-                    </Button>
-                  </Link>
-                </Col>
-              </Row> */}
-                <Container>
-                  <Col>
-                    <Card className="mb-5" bg="info" style={{ width: "18rem" }}>
-                      <Card.Body>
-                        <Card.Title>{goal.goal_name}</Card.Title>
-                        <Link to={`/detail_savings/${goal.id}`}>
-                          <Button variant="primary">Show details</Button>
-                        </Link>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Container>
+                {goal.saved_amount !== goal.target_amount && (
+                  <Container>
+                    <Col>
+                      <Card
+                        className="mb-5"
+                        bg="info"
+                        style={{ width: "18rem" }}
+                      >
+                        <Card.Body>
+                          <Card.Title>{goal.goal_name}</Card.Title>
+                          <Link to={`/detail_savings/${goal.id}`}>
+                            <Button variant="primary">Show details</Button>
+                          </Link>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Container>
+                )}
               </>
             ))}
           </Row>
