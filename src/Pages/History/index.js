@@ -61,7 +61,7 @@ export default function History() {
       </Container>
       {/* </div> */}
       <div>
-        {expense.length === 0 ? (
+        {expense.length === 0 && monthExpense.length === 0 ? (
           <div>
             <Image
               src={testImg}
