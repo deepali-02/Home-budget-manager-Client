@@ -31,6 +31,13 @@ const amountUpdated = (amount) => {
   };
 };
 
+const dateUpdated = (date) => {
+  return {
+    type: "UPDATE DATE",
+    payload: date,
+  };
+};
+
 export const fetchGoal = () => {
   return async (dispatch, getState) => {
     try {
@@ -69,7 +76,7 @@ export const detailsaving = (id) => {
   return async (dispatch, getState) => {
     try {
       const res = await axios.get(`${apiUrl}/user/savings/${id}`);
-      // console.log("Savings Details", res);
+      console.log("Savings Details", res);
       dispatch(savingDetail(res.data));
     } catch (e) {
       console.log(e.message);
@@ -84,8 +91,24 @@ export const addToSave = (saved_amount) => {
       const res = await axios.patch(`${apiUrl}/user/addSaving/${goal.id}`, {
         saved_amount,
       });
-      console.log("Amount updated? ", res);
+      // console.log("Amount updated? ", res);
       dispatch(amountUpdated(res.data.saved_amount));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
+
+export const changeGoalDate = (desire_date) => {
+  return async (dispatch, getState) => {
+    try {
+      console.log("date in action", desire_date);
+      const goal = selectGoalDetails(getState());
+      const res = await axios.patch(`${apiUrl}/user/savings/${goal.id}`, {
+        desire_date,
+      });
+      console.log("Date updated?", res);
+      dispatch(dateUpdated(res.data.desire_date));
     } catch (e) {
       console.log(e.message);
     }
