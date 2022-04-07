@@ -5,12 +5,13 @@ import { useNavigate } from "react-router";
 import { selectToken } from "../../store/user/selector";
 import { selectGoalDetails } from "../../store/Goal/selector";
 import { detailsaving } from "../../store/Goal/action";
-import { Card, Container, Button } from "react-bootstrap";
+import { Card, Container, Button, Alert, Form, Stack } from "react-bootstrap";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import moment from "moment";
 // import { Link } from "react-router-dom";
 import AddToSaving from "../../components/AddToSaving";
+import { changeGoalDate } from "../../store/Goal/action";
 
 export default function DetailSavings() {
   const dispatch = useDispatch();
@@ -23,16 +24,59 @@ export default function DetailSavings() {
   const value = goalDetail.saved_amount;
   const maxValue = goalDetail.target_amount;
   const [mode, setMode] = useState(false);
+  const [dateMode, setDateMode] = useState(false);
+  const [desire_date, setDesire_date] = useState("");
 
+  const handleClick = (e) => {
+    // console.log("new date", desire_date);
+    dispatch(changeGoalDate(desire_date));
+  };
   useEffect(() => {
     if (token === null) {
       navigate("/");
     }
     dispatch(detailsaving(id));
   }, [dispatch, id, navigate, token]);
+
   return (
     <div>
-    
+      {moment(goalDetail.desire_date).format("DD/MM/YYYY") <
+        moment(Date()).format("DD/MM/YYYY") && (
+        <Alert variant="danger">
+          <Alert.Heading>
+            Sorry!!🙁 You are fail to achieve your{" "}
+            <b>"{goalDetail.goal_name}"</b> saving goal within time.🗓⌛{" "}
+          </Alert.Heading>
+          <p>
+            Do you stiil want to save for <b>{goalDetail.goal_name}</b>?{" "}
+            <Button
+              variant="outline-danger"
+              onClick={() => setDateMode(!dateMode)}
+            >
+              {" "}
+              Change desire date
+            </Button>
+          </p>
+          <Container className="col-md-5 mx-auto">
+            {dateMode && (
+              <Stack gap={2} className="col-md-5 mx-auto">
+                <Form.Group>
+                  <Form.Label>Pick new date</Form.Label>
+                  <Form.Control
+                    value={desire_date}
+                    onChange={(e) => setDesire_date(e.target.value)}
+                    type="date"
+                  />
+                  <Button className="mt-5" onClick={handleClick}>
+                    Save Changes
+                  </Button>
+                </Form.Group>
+              </Stack>
+            )}
+          </Container>
+        </Alert>
+      )}
+
       <Container>
         <Card className="text-center" style={{ border: "none" }}>
           <Card.Body>
