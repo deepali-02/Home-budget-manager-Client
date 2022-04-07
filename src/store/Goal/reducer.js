@@ -30,7 +30,17 @@ export default function goalReducer(state = initialState, action) {
       return {
         ...state,
         ...state.goals,
-        details: { ...state.details, saved_amount: action.payload  },
+        details: { ...state.details, saved_amount: action.payload },
+      };
+    }
+
+    case "UPDATE DATE": {
+      console.log("payload", action.payload);
+      return {
+        ...state,
+        ...state.goals,
+
+        details: { ...state.details, desire_date: action.payload },
       };
     }
 
