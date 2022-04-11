@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Col, Image, Row, Container, Button, Card } from "react-bootstrap";
+import { BUTTON_COLOR } from "../../config/constants";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGoal } from "../../store/Goal/action";
@@ -39,7 +40,14 @@ export default function Saving() {
           </Row>
           <Row className="justify-content-md-center">
             <Col>
-              <Button onClick={() => navigate("/addSavingsGoal")}>
+              <Button
+                style={{
+                  background: `${BUTTON_COLOR}`,
+                  color: "white",
+                  borderRadius: "5px",
+                }}
+                onClick={() => navigate("/addSavingsGoal")}
+              >
                 Set saving goals
               </Button>
             </Col>
@@ -51,7 +59,13 @@ export default function Saving() {
             <Col>
               <Button
                 variant="warning"
-                style={{ position: "right" }}
+                size="lg"
+                style={{
+                  position: "center",
+                  backgroundColor: `${BUTTON_COLOR}`,
+                  color: "white",
+                  borderRadius: "10px",
+                }}
                 onClick={() => navigate("/addSavingsGoal")}
               >
                 Set saving goals
@@ -66,13 +80,24 @@ export default function Saving() {
                     <Col>
                       <Card
                         className="mb-5"
-                        bg="info"
-                        style={{ width: "18rem" }}
+                        // bg="info"
+                        style={{ width: "18rem", backgroundColor: "#663366" }}
                       >
                         <Card.Body>
-                          <Card.Title>{goal.goal_name}</Card.Title>
+                          <Card.Title
+                            style={{ color: "whitesmoke", fontStyle: "italic" }}
+                          >
+                            <h4>{goal.goal_name}</h4>
+                          </Card.Title>
                           <Link to={`/detail_savings/${goal.id}`}>
-                            <Button variant="primary">Show details</Button>
+                            <Button
+                              style={{
+                                backgroundColor: "#CC6666",
+                                border: "#CCFF66",
+                              }}
+                            >
+                              Show details
+                            </Button>
                           </Link>
                         </Card.Body>
                       </Card>

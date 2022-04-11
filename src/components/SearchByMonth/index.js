@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { BUTTON_COLOR } from "../../config/constants";
 
 import { expenseByMonth } from "../../store/myExpenses/action";
 
@@ -63,7 +64,12 @@ export default function SearchMonth() {
             </Col>
             <Col>
               <Form.Group>
-                <Button type="submit">Search</Button>
+                <Button
+                  type="submit"
+                  style={{ backgroundColor: `${BUTTON_COLOR}` }}
+                >
+                  Search
+                </Button>
               </Form.Group>
             </Col>
           </Row>

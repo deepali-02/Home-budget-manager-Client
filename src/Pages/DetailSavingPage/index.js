@@ -5,7 +5,18 @@ import { useNavigate } from "react-router";
 import { selectToken } from "../../store/user/selector";
 import { selectGoalDetails } from "../../store/Goal/selector";
 import { detailsaving } from "../../store/Goal/action";
-import { Card, Container, Button, Alert, Form, Stack } from "react-bootstrap";
+import {
+  Card,
+  Container,
+  Button,
+  Alert,
+  Form,
+  Stack,
+  Row,
+  Col,
+} from "react-bootstrap";
+import { BUTTON_COLOR } from "../../config/constants";
+
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import moment from "moment";
@@ -67,7 +78,11 @@ export default function DetailSavings() {
                     onChange={(e) => setDesire_date(e.target.value)}
                     type="date"
                   />
-                  <Button className="mt-5" onClick={handleClick}>
+                  <Button
+                    className="mt-5"
+                    style={{ backgroundColor: `${BUTTON_COLOR}` }}
+                    onClick={handleClick}
+                  >
                     Save Changes
                   </Button>
                 </Form.Group>
@@ -78,43 +93,67 @@ export default function DetailSavings() {
       )}
 
       <Container>
-        <Card className="text-center" style={{ border: "none" }}>
+        <Card
+          className="text-center"
+          style={{ border: "none", backgroundColor: "lightgoldenrodyellow" }}
+        >
           <Card.Body>
             <Card.Title className="mb-5">
-              <h2>Name: {goalDetail.goal_name}</h2>
+              <h2> {goalDetail.goal_name} </h2>
             </Card.Title>
             <Card.Text>
-              <p>
-                {" "}
-                <h4>
-                  Desire Date:{" "}
-                  {moment(goalDetail.desire_date).format("DD/MM/YYYY")}
-                </h4>
-                <h4>Target amount: {goalDetail.target_amount}€ </h4>
-                <h4>
-                  Saved amount:{" "}
-                  {goalDetail.saved_amount === null
-                    ? "0€"
-                    : `${goalDetail.saved_amount}€`}
-                </h4>
-                <div
-                  style={{
-                    alignItems: "center",
-                    width: 200,
-                    height: 200,
-                    marginLeft: "40%",
-                  }}
+              <Row className="justify-content-md-center">
+                <Col
+                  className="justify-content-md-center mt-5"
+                  style={{ color: "#660033" }}
                 >
-                  <CircularProgressbar
-                    value={goalDetail.saved_amount}
-                    maxValue={goalDetail.target_amount}
-                    text={`${Math.round((value / maxValue) * 100)}%`}
-                  />{" "}
-                </div>
-              </p>
+                  <p>
+                    {" "}
+                    <h5>
+                      Desire Date:{" "}
+                      <b>
+                        {moment(goalDetail.desire_date).format("DD/MM/YYYY")}
+                      </b>
+                    </h5>
+                    <h5>
+                      Target amount: <b>{goalDetail.target_amount}€ </b>
+                    </h5>
+                    <h5>
+                      Saved amount:{" "}
+                      <b>
+                        {goalDetail.saved_amount === null
+                          ? "0€"
+                          : `${goalDetail.saved_amount}€`}
+                      </b>
+                    </h5>
+                  </p>
+                </Col>
+                <Col>
+                  <p>
+                    <div
+                      style={{
+                        alignItems: "center",
+                        width: 200,
+                        height: 200,
+                        marginLeft: "40%",
+                      }}
+                    >
+                      <CircularProgressbar
+                        value={goalDetail.saved_amount}
+                        maxValue={goalDetail.target_amount}
+                        text={`${Math.round((value / maxValue) * 100)}%`}
+                      />{" "}
+                    </div>
+                  </p>
+                </Col>
+              </Row>
             </Card.Text>
-
-            <Button onClick={() => setMode(!mode)} variant="primary">
+            <Button
+              onClick={() => setMode(!mode)}
+              size="lg"
+              variant="warning"
+              style={{ backgroundColor: `${BUTTON_COLOR}`, color: "white" }}
+            >
               {" "}
               {mode ? "Close" : "Add to saving"}
             </Button>

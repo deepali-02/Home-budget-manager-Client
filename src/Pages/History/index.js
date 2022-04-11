@@ -10,6 +10,7 @@ import {
   Row,
   DropdownButton,
 } from "react-bootstrap";
+import { BUTTON_COLOR } from "../../config/constants";
 import "./style.css";
 import { useEffect, useState } from "react";
 import { fetchMyExpenses } from "../../store/myExpenses/action";
@@ -153,18 +154,20 @@ export default function History() {
                   <h3> Expense history as per categories</h3>
                 </Row>
                 <Row className="mt-5">
-                  <DropdownButton
-                    title="Select BarChart"
-                    className="mb-3"
-                    onSelect={handleSelect}
-                  >
-                    {/* <Dropdown.Toggle variant="success" id="dropdown-basic">
-                      Choose BarChart
-                    </Dropdown.Toggle> */}
-
-                    <Dropdown.Item eventKey={true}>BarChart 1</Dropdown.Item>
-                    <Dropdown.Item eventKey={false}>BarChart 2</Dropdown.Item>
-                  </DropdownButton>
+                  <Dropdown>
+                    <DropdownButton
+                      variant="success"
+                      title="Select BarChart"
+                      menuVariant="dark"
+                      className="mb-3"
+                      onSelect={handleSelect}
+                    >
+                      <Dropdown.Item eventKey={true}>BarChart 1</Dropdown.Item>
+                      <Dropdown.Item variant="warning" eventKey={false}>
+                        BarChart 2
+                      </Dropdown.Item>
+                    </DropdownButton>
+                  </Dropdown>
                 </Row>
                 <Row className="mt-5">
                   {mode === "true" ? <BarChart1 /> : <BarChart2 />}

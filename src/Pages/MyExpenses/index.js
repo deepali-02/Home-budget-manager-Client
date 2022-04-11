@@ -6,6 +6,7 @@ import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
 import "./style.css";
+import { BUTTON_COLOR } from "../../config/constants";
 //import { selectMyExpenses } from "../../store/myExpenses/selector";
 
 import DoughnutChart from "../../components/Doughnut";
@@ -71,6 +72,7 @@ export default function MyExpenses() {
         <Col sm md="auto" className="mt-3">
           <Button
             size="lg"
+            style={{ backgroundColor: `${BUTTON_COLOR}` }}
             onClick={overbudget ? open : () => navigate("/addExpenses")}
           >
             Add Expenses
