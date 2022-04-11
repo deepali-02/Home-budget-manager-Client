@@ -14,44 +14,8 @@ export default function NavBar() {
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
   return (
-    // <div>
-    //   <NavLink to="/">Login</NavLink>
-    //   <br />
-    //   <NavLink to="/signup">Signup</NavLink>
-    // </div>
-
-    // <Navbar bg="dark" variant="dark">
-    //   <Container>
-    //     <Navbar.Brand href="#home">HBM</Navbar.Brand>
-    //     <Nav className="me-auto">
-    //       <Nav.Link to="/">Login</Nav.Link>
-    //       <Nav.Link to="/signup">Signup</Nav.Link>
-    //     </Nav>
-    //   </Container>
-    // </Navbar>
-    // <>
-    //   <Navbar
-    //     collapseOnSelect
-    //     fixed="top"
-    //     expand="sm"
-    //     bg="light"
-    //     varient="dark"
-    //   >
-    //     <Navbar.Brand style={{ marginLeft: "5%" }} to="/">
-    //       <img src={logo} width="70px" height="70px" alt="" />
-    //     </Navbar.Brand>
-
-    //     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-    //     <Navbar.Collapse id="responsive-navbar-nav">
-    //       <Nav className="me-auto">
-    //         <Nav.Link href="/">Home</Nav.Link>
-    //         {loginLogoutControls}
-    //       </Nav>
-    //     </Navbar.Collapse>
-    //   </Navbar>
-    // </>
     <>
-      <Navbar expand="lg" variant="light">
+      <Navbar expand="lg" style={{ color: "#660000" }}>
         <Navbar.Brand as={NavLink} to="/">
           {" "}
           <img
@@ -64,8 +28,8 @@ export default function NavBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto" style={{ color:"white"}}>
-            <NavbarItem style={{ Text, }} path="/" linkText="Home" />
+          <Nav className="me-auto" style={{ color: "#660000" }}>
+            <NavbarItem style={{ Text }} path="/" linkText="Home" />
             {/* <NavbarItem path="/about" linkText="About Me" /> */}
             {token ? (
               <NavbarItem path="/my_expenses" linkText="My Expenses" />
