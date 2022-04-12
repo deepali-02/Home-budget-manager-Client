@@ -38,6 +38,13 @@ const dateUpdated = (date) => {
   };
 };
 
+export function savingDeleted(id) {
+  return {
+    type: "DELETE_SAVING",
+    payload: id,
+  };
+}
+
 export const fetchGoal = () => {
   return async (dispatch, getState) => {
     try {
@@ -109,6 +116,18 @@ export const changeGoalDate = (desire_date) => {
       });
       console.log("Date updated?", res);
       dispatch(dateUpdated(res.data.desire_date));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
+
+export const deleteSaving = (id) => {
+  return async (dispatch, getState) => {
+    try {
+      const res = await axios.delete(`${apiUrl}/user/saving/delete/${id}`);
+      console.log("deleted?", res.data);
+      dispatch(savingDeleted(id));
     } catch (e) {
       console.log(e.message);
     }

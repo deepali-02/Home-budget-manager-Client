@@ -44,6 +44,17 @@ export default function goalReducer(state = initialState, action) {
       };
     }
 
+    case "DELETE_SAVING": {
+      const savingId = action.payload;
+      const savings = state.goals;
+      const filterSavings = savings.filter((saving) => saving.id !== savingId);
+      console.log("filter saving ", filterSavings);
+      return {
+        ...state,
+        goals: filterSavings,
+      };
+    }
+
     default:
       return state;
   }
