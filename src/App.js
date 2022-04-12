@@ -1,14 +1,15 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import NavBar from "./components/Navigation/NavBar";
 import HomePage from "./Pages/HomePage";
 import MyExpenses from "./Pages/MyExpenses";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import MessageBox from "./components/MessageBox";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/action";
 import AddExpense from "./components/AddExpense";
 import History from "./Pages/History";
@@ -26,15 +27,7 @@ function App() {
     dispatch(getUserWithStoredToken());
   }, [dispatch]);
   return (
-    <div
-      className="App"
-      // style={{
-      //   backgroundImage: "url(" + bg + ")",
-      //   backgroundSize: "cover",
-      //   height: "100vh",
-      //   width: "100%",
-      // }}
-    >
+    <div className="App">
       <NavBar />
       <MessageBox />
       <br />
