@@ -1,7 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectMyExpenses } from "../../store/myExpenses/selector";
-import BarChart1 from "../../components/BarChart";
-import BarChart2 from "../../components/BarChart2";
 import {
   Image,
   Container,
@@ -10,13 +7,16 @@ import {
   Row,
   DropdownButton,
 } from "react-bootstrap";
-import { BUTTON_COLOR } from "../../config/constants";
-import "./style.css";
+import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import "./style.css";
+import testImg from "../../images/test.png";
+
+import { selectMyExpenses } from "../../store/myExpenses/selector";
+import BarChart1 from "../../components/BarChart";
+import BarChart2 from "../../components/BarChart2";
 import { fetchMyExpenses } from "../../store/myExpenses/action";
 import { selectUser } from "../../store/user/selector";
-import { useNavigate } from "react-router";
-import testImg from "../../images/test.png";
 import SearchMonth from "../../components/SearchByMonth";
 import { selectSearchMonth } from "../../store/myExpenses/selector";
 import { deleteExpense } from "../../store/myExpenses/action";
@@ -30,11 +30,8 @@ export default function History() {
 
   const expense = useSelector(selectMyExpenses);
   const monthExpense = useSelector(selectSearchMonth);
-  // console.log("selected month Expenses from history", monthExpense);
 
   useEffect(() => {
-    //console.log("I am from useEffect");
-    //console.log("id from myExpense page", id);
     if (token === null) {
       navigate("/");
     }
@@ -42,7 +39,6 @@ export default function History() {
   }, [dispatch, id, navigate, token]);
 
   const onDeleteClick = (id) => {
-    // console.log("story to be deleted!");
     dispatch(deleteExpense(id));
   };
 
@@ -52,7 +48,6 @@ export default function History() {
 
   return (
     <div>
-      {/* <div> */}
       <Container
         fluid
         className="mb-5"
@@ -60,7 +55,7 @@ export default function History() {
       >
         <SearchMonth />
       </Container>
-      {/* </div> */}
+
       <div>
         {expense.length === 0 && monthExpense.length === 0 ? (
           <div>

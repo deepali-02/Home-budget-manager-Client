@@ -1,8 +1,9 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
-import { newGoal } from "../../store/Goal/action";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+
+import { newGoal } from "../../store/Goal/action";
 
 export default function AddSavingsGoal() {
   const dispatch = useDispatch();

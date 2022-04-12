@@ -9,11 +9,11 @@ import {
 } from "recharts";
 
 import { useSelector } from "react-redux";
+import { Container, Row, Col } from "react-bootstrap";
+
+import { selectSearchMonth } from "../../store/myExpenses/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { selectUser } from "../../store/user/selector";
-import { Container, Row, Col } from "react-bootstrap";
-import { selectSearchMonth } from "../../store/myExpenses/selector";
-// import { MDBContainer } from "mdbreact";
 
 export default function BarChart1() {
   const myExpense = useSelector(selectMyExpenses);
@@ -28,7 +28,7 @@ export default function BarChart1() {
       const categoryExist = acc.find(
         (eachExpense) => eachExpense.categoryId === expense.categoryId
       );
-      // console.log("Category Exist", categoryExist);
+
       const updatedCategory = categoryExist
         ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
         : null;
@@ -51,7 +51,7 @@ export default function BarChart1() {
       const categoryExist = acc.find(
         (eachExpense) => eachExpense.categoryId === expense.categoryId
       );
-      // console.log("Category Exist", categoryExist);
+
       const updatedCategory = categoryExist
         ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
         : null;
@@ -81,13 +81,7 @@ export default function BarChart1() {
     <Container>
       <Row sm>
         <Col md={{ span: 3, offset: 3 }}>
-          <BarChart
-            width={600}
-            height={400}
-            data={expense}
-            // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-            barSize={35}
-          >
+          <BarChart width={600} height={400} data={expense} barSize={35}>
             <XAxis
               dataKey="name"
               scale="point"

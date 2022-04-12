@@ -3,13 +3,12 @@ import { Col, Image, Row, Container, Button, Card } from "react-bootstrap";
 import { BUTTON_COLOR } from "../../config/constants";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
+import testImg from "../../images/test.png";
+import { Link } from "react-router-dom";
+
 import { fetchGoal } from "../../store/Goal/action";
 import { selectGoals } from "../../store/Goal/selector";
 import { selectToken } from "../../store/user/selector";
-// import moment from "moment";
-
-import testImg from "../../images/test.png";
-import { Link } from "react-router-dom";
 
 export default function Saving() {
   const navigate = useNavigate();
@@ -80,7 +79,6 @@ export default function Saving() {
                     <Col>
                       <Card
                         className="mb-5"
-                        // bg="info"
                         style={{ width: "18rem", backgroundColor: "#663366" }}
                       >
                         <Card.Body>

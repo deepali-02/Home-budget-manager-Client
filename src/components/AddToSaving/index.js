@@ -1,18 +1,18 @@
 import { Col, Container, Form, Row, Button, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { addToSave } from "../../store/Goal/action";
 import saveimg from "../../images/saveMoney.gif";
+import { addToSave } from "../../store/Goal/action";
 import { selectGoalDetails } from "../../store/Goal/selector";
 
 export default function AddToSaving() {
   const [amount, setAmount] = useState(0);
   const dispatch = useDispatch();
-  const goal=useSelector(selectGoalDetails)
+  const goal = useSelector(selectGoalDetails);
   function submitForm(e) {
     e.preventDefault();
-    const saved_amount = (goal.saved_amount + parseFloat(amount))
-    console.log("toatlsaved amount", saved_amount)
+    const saved_amount = goal.saved_amount + parseFloat(amount);
+    console.log("toatlsaved amount", saved_amount);
     dispatch(addToSave(saved_amount));
     setAmount(0);
   }
@@ -43,12 +43,8 @@ export default function AddToSaving() {
             </Form>
           </Col>
           <Col md={{ span: 3 }} xs={6}>
-            {/* <Row>
-              <Col > */}
             <h3>Save more grow more</h3>
             <Image src={saveimg} fluid />
-            {/* </Col>
-            </Row> */}
           </Col>
         </Row>
       </Container>

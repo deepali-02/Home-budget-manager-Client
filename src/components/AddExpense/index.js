@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Container, Row, Col, Image } from "react-bootstrap";
+import { useNavigate } from "react-router";
 import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
+import img from "../../images/giphy.gif";
+
 import { getCategory } from "../../store/myExpenses/action";
 import { selectCategory } from "../../store/myExpenses/selector";
 import { newExpense } from "../../store/myExpenses/action";
-import { useNavigate } from "react-router";
-import img from "../../images/giphy.gif";
 import { selectUser } from "../../store/user/selector";
 
 export default function AddExpense() {
@@ -32,7 +33,6 @@ export default function AddExpense() {
 
   function submitForm(e) {
     e.preventDefault();
-    // console.log("amount,date,categoryId", amount, date, categoryId);
     if (!categoryId) return;
     dispatch(newExpense(amount, date, categoryId));
     setAmount(0);
@@ -50,9 +50,7 @@ export default function AddExpense() {
               onSubmit={submitForm}
               className="rounded p-4 p-sm-3 mt-5"
               style={{
-                // width: "100%",
                 alignItems: "center",
-                // marginLeft: "20%",
                 boxShadow: "2px 2px 2px 2px rgba(0.2,0.2,0.2,0.2)",
               }}
             >
@@ -70,9 +68,7 @@ export default function AddExpense() {
                 <Form.Label>Select Category</Form.Label>
                 <Form.Select
                   onChange={(event) => setCategoryId(event.target.value)}
-                  // isInvalid
                   required
-                  // id="enabledSelect"
                 >
                   <option value="" disabled selected>
                     Please select the category

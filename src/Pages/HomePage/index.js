@@ -1,4 +1,3 @@
-
 import img1 from "../../images/moneyslides_800x600.gif";
 import logo from "../../images/HBM.jpeg";
 import { Row, Image, Col } from "react-bootstrap";
@@ -6,11 +5,6 @@ import { Row, Image, Col } from "react-bootstrap";
 export default function HomePage() {
   return (
     <>
-      {/* <Container> */}
-      {/* <Card> */}
-      {/* <Card.Header> */}
-
-      {/* </Card.Header> */}
       <Row className="mb-5" style={{ backgroundColor: "#E5D04A " }}>
         <h1 data-text="Spotlight">
           <img
@@ -19,7 +13,6 @@ export default function HomePage() {
               width: "70px",
               height: "70px",
               borderRadius: "80px",
-              // border: "none",
             }}
             alt=""
           />{" "}
@@ -27,7 +20,6 @@ export default function HomePage() {
         </h1>
       </Row>
 
-      {/* <Container fluid> */}
       <Row sx="auto" style={{ justifyContent: "center" }}>
         <Col>
           <Image
@@ -38,7 +30,6 @@ export default function HomePage() {
           />
         </Col>
       </Row>
-      {/* </Container> */}
     </>
   );
 }

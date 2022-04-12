@@ -2,10 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
-import { selectToken } from "../../store/user/selector";
-import { selectGoalDetails } from "../../store/Goal/selector";
-import { detailsaving } from "../../store/Goal/action";
-import { deleteSaving } from "../../store/Goal/action";
 import {
   Card,
   Container,
@@ -16,12 +12,15 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import { BUTTON_COLOR } from "../../config/constants";
-
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import moment from "moment";
-// import { Link } from "react-router-dom";
+import { BUTTON_COLOR } from "../../config/constants";
+
+import { selectToken } from "../../store/user/selector";
+import { selectGoalDetails } from "../../store/Goal/selector";
+import { detailsaving } from "../../store/Goal/action";
+import { deleteSaving } from "../../store/Goal/action";
 import AddToSaving from "../../components/AddToSaving";
 import { changeGoalDate } from "../../store/Goal/action";
 
@@ -37,8 +36,7 @@ export default function DetailSavings() {
   const token = useSelector(selectToken);
   const { id } = useParams();
   const goalDetail = useSelector(selectGoalDetails);
-  // console.log("detail", goalDetail);
-  // console.log("name", goalDetail.goal_name);
+
   const value = goalDetail.saved_amount;
   const maxValue = goalDetail.target_amount;
   const [mode, setMode] = useState(false);
@@ -55,7 +53,6 @@ export default function DetailSavings() {
   };
 
   const handleClick = (e) => {
-    // console.log("new date", desire_date);
     dispatch(changeGoalDate(desire_date));
   };
   useEffect(() => {

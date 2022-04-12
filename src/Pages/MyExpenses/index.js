@@ -1,20 +1,17 @@
-import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import { fetchMyExpenses } from "../../store/myExpenses/action";
-import { selectUser } from "../../store/user/selector";
-import { selectMyExpenses } from "../../store/myExpenses/selector";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { Container, Row, Col, ProgressBar, Button } from "react-bootstrap";
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
 import "./style.css";
 import { BUTTON_COLOR } from "../../config/constants";
-//import { selectMyExpenses } from "../../store/myExpenses/selector";
 
 import DoughnutChart from "../../components/Doughnut";
-import Button from "react-bootstrap/Button";
-
+import { fetchMyExpenses } from "../../store/myExpenses/action";
+import { selectUser } from "../../store/user/selector";
+import { selectMyExpenses } from "../../store/myExpenses/selector";
 import { selectSearchMonth } from "../../store/myExpenses/selector";
-import { useNavigate } from "react-router";
-import { Container, Row, Col, ProgressBar } from "react-bootstrap";
 
 export default function MyExpenses() {
   const dispatch = useDispatch();
@@ -33,11 +30,6 @@ export default function MyExpenses() {
     dispatch(fetchMyExpenses(id));
   }, [dispatch, id]);
 
-  // const form = () => {
-  //   console.log("I am in function");
-  //   <AddExpense />;
-  // };
-
   const navigate = useNavigate();
   let amt;
   if (monthExpense.length !== 0) {
@@ -46,11 +38,8 @@ export default function MyExpenses() {
     amt = myExpense.map((ex) => ex.amount);
   }
 
-  // console.log("hello amount", amt);
   let sum = amt.reduce((a, b) => a + b, 0);
-  // let balance = budget - sum;
-  // console.log("Hello Sum", sum);
-  // console.log("budget", budget);
+
   let overbudget = sum >= budget;
   return (
     <Container fluid>
@@ -86,18 +75,6 @@ export default function MyExpenses() {
       </Row>
 
       <div>
-        {/* <Button className="mt-5" onClick={() => navigate("/addExpenses")}>
-          Add expense
-        </Button>
-        <br />
-        <br /> */}
-        {/* <Button
-          className="mt-5"
-          onClick={overbudget ? open : () => navigate("/addExpenses")}
-        >
-          Add Expenses
-        </Button>
-        {console.log("show:", showDialog)} */}
         {showDialog && (
           <Dialog onDismiss={close}>
             <p>

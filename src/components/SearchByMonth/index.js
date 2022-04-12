@@ -39,10 +39,7 @@ export default function SearchMonth() {
           <Row>
             <Col>
               <Form.Group>
-                <Form.Select
-                  onChange={(event) => setMonth(event.target.value)}
-                  // aria-label="Default select example"
-                >
+                <Form.Select onChange={(event) => setMonth(event.target.value)}>
                   <option value="">Select month</option>
                   {monthArray.map((m) => {
                     return (

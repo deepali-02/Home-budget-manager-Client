@@ -1,19 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
 
 import { MDBContainer } from "mdbreact";
 
-// import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 import { selectSearchMonth } from "../../store/myExpenses/selector";
 import { selectMyExpenses } from "../../store/myExpenses/selector";
-// import { selectUser } from "../../store/user/selector";
 
 export default function BarChart2() {
   const myExpense = useSelector(selectMyExpenses);
   const monthExpense = useSelector(selectSearchMonth);
-  //     const { budget, token } = useSelector(selectUser);
-  //   const navigate = useNavigate();
+
   let mergedCategories;
 
   if (monthExpense.length !== 0) {
@@ -21,7 +18,7 @@ export default function BarChart2() {
       const categoryExist = acc.find(
         (eachExpense) => eachExpense.categoryId === expense.categoryId
       );
-      // console.log("Category Exist", categoryExist);
+
       const updatedCategory = categoryExist
         ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
         : null;
@@ -44,7 +41,6 @@ export default function BarChart2() {
       const categoryExist = acc.find(
         (eachExpense) => eachExpense.categoryId === expense.categoryId
       );
-      // console.log("Category Exist", categoryExist);
       const updatedCategory = categoryExist
         ? { ...categoryExist, amount: categoryExist.amount + expense.amount }
         : null;
@@ -87,9 +83,7 @@ export default function BarChart2() {
 
   return (
     <MDBContainer>
-      {/* <BarChart barSize={20}> */}
       <Bar data={data} style={{ maxHeight: "600px" }} />
-      {/* </BarChart> */}
     </MDBContainer>
   );
 }

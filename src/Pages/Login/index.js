@@ -34,15 +34,7 @@ export default function Login() {
     <Container>
       <Row>
         <Col className="mt-5">
-          <Form
-            className="mt-5"
-            // style={{
-            //   width: "80%",
-            //   marginTop: "10%",
-            //   marginLeft: "10%",
-            // boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.2)",
-            // }}
-          >
+          <Form className="mt-5">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -85,9 +77,7 @@ export default function Login() {
           </Form>
         </Col>
         <Col sm>
-          {/* <Card style={{ width: "80%", marginRight: "20%", marginLeft: "20%" }}> */}
           <Image src={loginImg} fluid style={{ border: "none" }} />
-          {/* </Card> */}
         </Col>
       </Row>
     </Container>

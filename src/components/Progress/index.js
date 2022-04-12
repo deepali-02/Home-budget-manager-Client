@@ -1,5 +1,4 @@
 export const Progress = (props) => {
-  //const { budget } = useSelector(selectUser);
   return (
     <div className="progress">
       <div
