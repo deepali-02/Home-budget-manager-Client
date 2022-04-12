@@ -1,7 +1,7 @@
 const initialState = {
   goals: [],
   details: {},
-  // goal_detail: {},
+  
 };
 
 export default function goalReducer(state = initialState, action) {

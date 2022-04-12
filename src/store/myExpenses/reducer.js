@@ -39,7 +39,7 @@ export default function myExpensesReducer(state = initialState, action) {
       const expenses = state.myExpenses;
       console.log("expenses from DELETE", expenses);
       const filterExpense = expenses.filter((ex) => ex.id !== expenseId);
-      console.log("filter expenses ", filterExpense);
+      // console.log("filter expenses ", filterExpense);
       return {
         ...state,
         myExpenses: filterExpense,

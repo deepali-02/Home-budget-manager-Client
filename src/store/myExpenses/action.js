@@ -70,14 +70,14 @@ export const newExpense = (amount, date, categoryId) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
-      console.log("I am from new expense function");
+      // console.log("I am from new expense function");
       const { id } = selectUser(getState());
       const response = await axios.post(`${apiUrl}/user/my_expenses/${id}`, {
         amount,
         date,
         categoryId,
       });
-      console.log("New Expense", response);
+      // console.log("New Expense", response);
       dispatch(newExpenseAdded(response.data));
       dispatch(appDoneLoading());
     } catch (e) {
@@ -92,7 +92,7 @@ export const expenseByMonth = (month) => {
     try {
       // const month=req.params.month
       const res = await axios.get(`${apiUrl}/user/my_expenses/month/${month}`);
-      console.log("selected month expenses: ", res);
+      // console.log("selected month expenses: ", res);
       dispatch(selectedMonth(res.data));
     } catch (e) {
       console.log(e.message);
@@ -104,7 +104,7 @@ export const expenseByMonth = (month) => {
 export const deleteExpense = (id) => async (dispatch, getstate) => {
   try {
     const res = await axios.delete(`${apiUrl}/user/my_expenses/delete/${id}`);
-    console.log("deleted?", res.data);
+    // console.log("deleted?", res.data);
     dispatch(expenseDeleted(id));
   } catch (e) {
     console.log(e.message);
