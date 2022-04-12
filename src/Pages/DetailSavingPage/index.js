@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import { selectToken } from "../../store/user/selector";
 import { selectGoalDetails } from "../../store/Goal/selector";
 import { detailsaving } from "../../store/Goal/action";
+import { deleteSaving } from "../../store/Goal/action";
 import {
   Card,
   Container,
@@ -24,6 +25,12 @@ import moment from "moment";
 import AddToSaving from "../../components/AddToSaving";
 import { changeGoalDate } from "../../store/Goal/action";
 
+import {
+  AlertDialog,
+  AlertDialogLabel,
+  AlertDialogDescription,
+} from "@reach/alert-dialog";
+
 export default function DetailSavings() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,12 +38,21 @@ export default function DetailSavings() {
   const { id } = useParams();
   const goalDetail = useSelector(selectGoalDetails);
   // console.log("detail", goalDetail);
-  console.log("name", goalDetail.goal_name);
+  // console.log("name", goalDetail.goal_name);
   const value = goalDetail.saved_amount;
   const maxValue = goalDetail.target_amount;
   const [mode, setMode] = useState(false);
   const [dateMode, setDateMode] = useState(false);
   const [desire_date, setDesire_date] = useState("");
+
+  const [showDialog, setShowDialog] = useState(false);
+  const cancelRef = useRef();
+  const open = () => setShowDialog(true);
+  const close = () => setShowDialog(false);
+  const onDelete = (id) => {
+    dispatch(deleteSaving(id));
+    navigate("/savings");
+  };
 
   const handleClick = (e) => {
     // console.log("new date", desire_date);
@@ -49,14 +65,19 @@ export default function DetailSavings() {
     dispatch(detailsaving(id));
   }, [dispatch, id, navigate, token]);
 
+  const date1 = new Date(goalDetail.desire_date);
+  const date2 = new Date();
+
+  console.log("goal date", date1);
+  console.log("today's date", date2);
+
   return (
     <div>
-      {moment(goalDetail.desire_date).format("DD/MM/YYYY") <
-        moment(Date()).format("DD/MM/YYYY") && (
+      {date1 < date2 && (
         <Alert variant="danger">
           <Alert.Heading>
             Sorry!!🙁 You are fail to achieve your{" "}
-            <b>"{goalDetail.goal_name}"</b> saving goal within time.🗓⌛{" "}
+            <b>"{goalDetail.goal_name}"</b> saving goal within set time.🗓⌛{" "}
           </Alert.Heading>
           <p>
             Do you stiil want to save for <b>{goalDetail.goal_name}</b>?{" "}
@@ -148,15 +169,61 @@ export default function DetailSavings() {
                 </Col>
               </Row>
             </Card.Text>
-            <Button
-              onClick={() => setMode(!mode)}
-              size="lg"
-              variant="warning"
-              style={{ backgroundColor: `${BUTTON_COLOR}`, color: "white" }}
-            >
-              {" "}
-              {mode ? "Close" : "Add to saving"}
-            </Button>
+            <Row>
+              <Col>
+                <Button
+                  onClick={() => setMode(!mode)}
+                  size="lg"
+                  variant="warning"
+                  style={{ backgroundColor: `${BUTTON_COLOR}`, color: "white" }}
+                >
+                  {" "}
+                  {mode ? "Close" : "Add to saving"}
+                </Button>
+              </Col>
+              <Col>
+                <Button variant="outline-danger" onClick={open}>
+                  Delete this saving <b>❌</b>
+                </Button>
+                {showDialog && (
+                  <AlertDialog leastDestructiveRef={cancelRef}>
+                    <AlertDialogLabel>
+                      <h3>
+                        <b>Please Confirm!</b>
+                      </h3>
+                    </AlertDialogLabel>
+
+                    <AlertDialogDescription>
+                      Are you sure you want to delete this saving? This action
+                      is permanent. By deleting, you can't keep track of{" "}
+                      <b>{goalDetail.goal_name}</b> anymore.
+                    </AlertDialogDescription>
+
+                    <div className="alert-buttons">
+                      <Row className="mt-5">
+                        <Col>
+                          <Button
+                            variant="danger"
+                            onClick={() => onDelete(goalDetail.id)}
+                          >
+                            Yes, delete
+                          </Button>
+                        </Col>
+                        <Col>
+                          <Button
+                            variant="secondary"
+                            ref={cancelRef}
+                            onClick={close}
+                          >
+                            Nevermind, don't delete.
+                          </Button>
+                        </Col>
+                      </Row>
+                    </div>
+                  </AlertDialog>
+                )}
+              </Col>
+            </Row>
           </Card.Body>
         </Card>
         {mode && (
